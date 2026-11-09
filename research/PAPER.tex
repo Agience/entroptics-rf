@@ -1,0 +1,980 @@
+% arxiv-twocolumn.latex: the shared pandoc template for a two-column arXiv-style preprint.
+% Built by build_paper.py (pandoc, then tectonic or any XeLaTeX); arxiv-twocolumn.lua is its filter.
+% Engine: XeTeX (fontspec, unicode-math). Fonts: Latin Modern text and math, DejaVu Sans Mono for code;
+% a character the current font lacks falls back to Latin Modern Math, then to DejaVu Sans.
+\documentclass[10pt,letterpaper,twocolumn]{article}
+\usepackage[letterpaper,top=0.75in,bottom=0.9in,left=0.7in,right=0.7in,columnsep=0.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{lmroman10}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{lmsans10}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-oblique,BoldItalicFont=*-boldoblique]
+\setmonofont{DejaVuSansMono}[Extension=.ttf,UprightFont=*,BoldFont=*-Bold,ItalicFont=*-Oblique,BoldItalicFont=*-BoldOblique,Scale=MatchLowercase]
+\setmathfont{latinmodern-math.otf}
+\newfontfamily\typesetfallbackmath{latinmodern-math.otf}
+\newfontfamily\typesetfallbacksans{DejaVuSans}[Extension=.ttf,UprightFont=*,BoldFont=*-Bold,ItalicFont=*-Oblique,BoldItalicFont=*-BoldOblique]
+% \typesetmap{"XXXX} (build_paper.py writes one for each character outside Latin-1 and Latin
+% Extended-A that the paper uses) makes the character active at the start of the document: in text it
+% comes from the current font when that has it, else from the first fallback that does; in math it
+% keeps whatever unicode-math gave it (a prime stays a prime).
+\makeatletter
+\protected\def\typesetglyph#1{%
+  \iffontchar\font#1\relax\char#1\relax
+  \else{\typesetfallbackmath\iffontchar\font#1\relax\char#1\relax\else\typesetfallbacksans\char#1\relax\fi}%
+  \fi}
+\def\typeset@math#1{%
+  \ifcsname typeset@m@#1\endcsname\csname typeset@m@#1\expandafter\endcsname\else\Uchar#1 \fi}
+\protected\def\typesetchar#1{\ifmmode\expandafter\typeset@math\else\expandafter\typesetglyph\fi{#1}}
+\def\typesetmap#1{%
+  \edef\typeset@n{\number#1}% outside \lowercase, which would lowercase the hex digits A-F
+  \begingroup\lccode`\~=\typeset@n\relax
+  \lowercase{\endgroup
+    \ifdefined~\expandafter\let\csname typeset@m@\typeset@n\endcsname~\fi
+    \edef~{\noexpand\typesetchar{\typeset@n}}}%
+  \catcode\typeset@n=13\relax}
+\makeatother
+% amssymb names that unicode-math spells differently.
+\AtBeginDocument{%
+  \providecommand{\square}{\mdlgwhtsquare}\providecommand{\Box}{\mdlgwhtsquare}%
+  \providecommand{\blacksquare}{\mdlgblksquare}\providecommand{\lozenge}{\mdlgwhtlozenge}%
+  \providecommand{\blacklozenge}{\mdlgblklozenge}}
+% Legacy two-letter font commands (\rm, \bf, \it, ...), in text and in math.
+\providecommand{\rm}{}\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\providecommand{\bf}{}\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\providecommand{\it}{}\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\providecommand{\sf}{}\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\providecommand{\tt}{}\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{xtab}
+\usepackage{cuted}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\captionsetup[table]{position=top}
+\usepackage{fvextra}
+\usepackage{xurl}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{footmisc}
+\usepackage{enumitem}
+\setlist{itemsep=1pt,topsep=3pt,parsep=0pt}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=MidnightBlue,citecolor=MidnightBlue,urlcolor=MidnightBlue,filecolor=MidnightBlue,
+  pdftitle={Entroptics-RF},pdfauthor={Ikailo John Sessford},pdfcreator={pandoc + XeTeX},bookmarksnumbered=true}
+\pdfstringdefDisableCommands{\def\typesetchar#1{\Uchar#1 }}
+
+% Paragraphs: indented, no extra space, ragged bottom so columns do not stretch.
+\setlength{\parskip}{0pt}
+\raggedbottom
+\emergencystretch=1.5em
+\tolerance=1000
+\hbadness=10000
+\clubpenalty=10000
+\widowpenalty=10000
+
+% Section headings. Numbered only when the paper's own headings carry no numbers (build_paper.py decides).
+\setcounter{secnumdepth}{-\maxdimen}
+\titleformat*{\section}{\normalfont\large\bfseries\raggedright}
+\titleformat*{\subsection}{\normalfont\normalsize\bfseries\raggedright}
+\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries\itshape\raggedright}
+\titleformat*{\paragraph}{\normalfont\normalsize\itshape}
+\titlespacing*{\section}{0pt}{2.0ex plus 1ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.6ex plus 1ex minus .2ex}{0.6ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.4ex plus 1ex minus .2ex}{0.5ex plus .2ex}
+\titlespacing*{\paragraph}{0pt}{1.0ex plus .5ex}{0.6em}
+
+% Code: monospaced at the floor size, wrapped at the column edge and never scaled.
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\footnotesize,breaklines=true,breakanywhere=true,breaksymbolleft={},
+  xleftmargin=0.5em,frame=leftline,framerule=0.4pt,rulecolor=\color{Gray},framesep=0.5em}
+
+% Tables: small type, tight columns. Long tables break across columns (xtabular); wide ones float full width.
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+% Scaling has a floor: nothing is set smaller than \typesetfloor.
+% DERIVED: 8 pt is \footnotesize of this 10 pt class, the smallest running text the template sets
+% (tables, code), so a scaled display is never smaller than the smallest text already on the page.
+\newdimen\typesetfloor \typesetfloor=8pt
+\newsavebox{\typesetfitbox}
+\newif\iftypesetfitok
+\makeatletter
+% \typeset@try{width}{base size}: does \typesetfitbox fit in width, scaled no smaller than the floor?
+% Sets \iftypesetfitok, and logs the scale it would apply ("typeset-scale: <scale x 1000>").
+\def\typeset@try#1#2{%
+  \ifdim\wd\typesetfitbox>#1\relax
+    \edef\typeset@scale{\the\numexpr\number\dimexpr#1\relax*1000/\number\wd\typesetfitbox\relax}%
+    % the effective size, base size x scale, against the floor
+    \ifdim\dimexpr#2*\typeset@scale/1000\relax<\typesetfloor
+      \typesetfitokfalse
+    \else
+      \typesetfitoktrue\typeout{typeset-scale: \typeset@scale}%
+    \fi
+  \else
+    \typesetfitoktrue
+  \fi}
+% \typesetfit{width}{content}: the content at natural size, scaled down only when wider than width,
+% and never below the floor; content too wide even at the floor is set at the floor and overflows,
+% which the build reports ("typeset-overflow").
+\newcommand{\typesetfit}[2]{\sbox{\typesetfitbox}{#2}\typeset@place{#1}{\f@size pt}}
+\def\typeset@place#1#2{%
+  \typeset@try{#1}{#2}%
+  \iftypesetfitok
+    \ifdim\wd\typesetfitbox>#1\relax\resizebox{#1}{!}{\usebox{\typesetfitbox}}\else\usebox{\typesetfitbox}\fi
+  \else
+    \edef\typeset@floorscale{\the\numexpr\number\typesetfloor*1000/\number\dimexpr#2\relax\relax}%
+    \ifnum\typeset@floorscale<1000
+      \typeout{typeset-scale: \typeset@floorscale}%
+      \scalebox{\strip@pt\dimexpr\typeset@floorscale pt/1000\relax}{\usebox{\typesetfitbox}}%
+    \else
+      \usebox{\typesetfitbox}%
+    \fi
+    \typeout{typeset-overflow: \the\wd\typesetfitbox\space into \the\dimexpr#1\relax}%
+  \fi}
+% \typesetdisplay{math}{split}: a display equation, and the same equation broken into lines at its
+% top-level \qquad separators (empty when it has none). The first of these that fits, never below the
+% floor, is used: the equation in the column; the split form in the column; the equation across both
+% columns (a strip at this point of the text); the split form across both columns.
+\def\typeset@show{%
+  \[\ifdim\wd\typesetfitbox>\linewidth\resizebox{\linewidth}{!}{\usebox{\typesetfitbox}}\else\usebox{\typesetfitbox}\fi\]}
+\def\typeset@strip{%
+  \typeout{typeset-strip: display}%
+  \par\begin{strip}\vspace{-\abovedisplayskip}\[\typeset@place{\textwidth}{\f@size pt}\]\vspace{-\belowdisplayskip}\end{strip}%
+  \noindent\ignorespaces}
+\long\def\typesetdisplay#1#2{%
+  \sbox{\typesetfitbox}{\(\displaystyle #1\)}%
+  \typeset@try{\linewidth}{\f@size pt}%
+  \iftypesetfitok\typeset@show\else
+    \long\def\typeset@alt{#2}%
+    \ifx\typeset@alt\@empty\typeset@strip\else
+      \sbox{\typesetfitbox}{\(\displaystyle #2\)}%
+      \typeset@try{\linewidth}{\f@size pt}%
+      \iftypesetfitok\typeset@show\else
+        \sbox{\typesetfitbox}{\(\displaystyle #1\)}%
+        \typeset@try{\textwidth}{\f@size pt}%
+        \iftypesetfitok\else\sbox{\typesetfitbox}{\(\displaystyle #2\)}\fi
+        \typeset@strip
+      \fi
+    \fi
+  \fi}
+% \typesetcolumntable{tabular}: an in-column table at natural size, in the column if it fits there
+% (tables are already at the floor size, so they are never scaled), otherwise across both columns.
+\long\def\typesetcolumntable#1{%
+  \sbox{\typesetfitbox}{\footnotesize #1}%
+  \ifdim\wd\typesetfitbox>\linewidth
+    \typeout{typeset-strip: table}%
+    \begin{strip}\centering\typeset@place{\textwidth}{\typesetfloor}\par\end{strip}%
+  \else
+    \begin{center}\usebox{\typesetfitbox}\end{center}%
+  \fi}
+\makeatother
+
+% For the build's report: how full each column is when it is made ("typeset-column: page columns
+% text floats height", lengths in sp). Float-only pages are made elsewhere and are not logged.
+\usepackage{etoolbox}
+\makeatletter
+\def\typeset@colfill{%
+  \setbox\z@\vbox{\unvcopy\@cclv}%
+  \typeout{typeset-column: \number\c@page\space\if@twocolumn 2\else 1\fi\space
+    \number\dimexpr\ht\z@+\dp\z@+\ht\footins+\dp\footins\relax\space
+    \number\dimexpr\textheight-\@colroom\relax\space\number\textheight}}
+\pretocmd{\@makecol}{\typeset@colfill}{}{\typeout{typeset-column: unavailable}}
+% A heading above the paper's section level (a part of the paper) is set as a centred divider.
+\newcounter{typesetpart}
+\newcommand{\typesetpart}[2]{\par\vspace{2.5ex plus 1ex}\stepcounter{typesetpart}%
+  \pdfbookmark[0]{#2}{typesetpart.\arabic{typesetpart}}%
+  {\centering\large\bfseries #1\par}\vspace{1.5ex plus .5ex}}
+\makeatother
+
+% Floats: allow full-width floats to take most of a page, and many to queue.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{dbltopnumber}{3}
+\setcounter{totalnumber}{5}
+\extrafloats{200}
+\setkeys{Gin}{width=\linewidth,height=0.8\textheight,keepaspectratio}
+
+% Pandoc helpers.
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\newcommand{\passthrough}[1]{#1}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\small\thepage}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\small\thepage}}
+
+\AtBeginDocument{%
+\typesetmap{"2192}% →
+\typesetmap{"2212}% −
+}
+
+\begin{document}
+
+% Title block across both columns, with the abstract under it when the two leave room for the body to
+% start on page 1; otherwise the abstract opens the two-column body, so no page is left near-empty.
+\makeatletter
+\newsavebox{\typesettitle}
+\newsavebox{\typesetfront}
+\setbox\typesettitle=\vbox{%
+  \hsize=\textwidth \linewidth=\textwidth \columnwidth=\textwidth
+  \begingroup\centering
+  {\LARGE\bfseries Entroptics-RF\par}
+  \vspace{0.8ex}{\large A radio waveform that is a keyed optical aperture: the payload rides the modes, and the receiver measures every parameter but the key.\par}
+  \vspace{1.8ex}
+  {\normalsize Ikailo John Sessford\par}
+  \vspace{0.3ex}
+  {\small\itshape Ikailo Inc.\par}
+  {\small \href{mailto:john@ikailo.com}{\texttt{john@ikailo.com}}\par}
+  \vspace{0.6ex}{\small Pre-print. August 2026.\par}
+  \endgroup
+}
+\long\def\typesetrule{\vspace{1.6ex}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1.5ex}}
+\long\def\typesetabstract{%
+We build a radio waveform whose transmitted field is a finite optical aperture, keyed. A block of bits becomes coordinates on every one of the \(L\) orthonormal modes of a screen of width \(L\); the screen is raveled into IQ; the aperture is drawn from a seed through a domain-separated SHAKE-256 keystream, so the \emph{optics are the key}. There is no FFT and no filter anywhere on the transmit or receive path: composition is a matrix product and reception is its adjoint. The receiver is handed a capture and, if the transmission is private, a key --- nothing else. The screen width, the row offset, the sub-sample position, the carrier offset, the symbol alphabet, which of the two payloads is riding, and --- for the analog mode --- the dimension of the vector carried, are all \emph{measured from the capture}, each by a read of the companion construction rather than by agreement, and we report what each read costs. Two of those are measured rather than agreed out of band (§RF-7, §RF-2.5). A public mode exists in which the aperture is drawn from the same keystream with the seed field empty, which anyone can derive, and the same code path decodes with no key at all.\\
+What the waveform withholds and what it does not are separate facts, and both are measured. It is detectable as energy and not as a signal: a radiometer sees it, out-detecting the decoder by about 20--28 dB (\texttt{research/\allowbreak{}detectability/\allowbreak{}README.\allowbreak{}md}), but a standard blind battery cannot classify it as a structured signal: against ten detectors, z-scored against a Gaussian-noise null with QPSK, 16-QAM and DSSS as positive controls, the worst \(|z|\) is 2.7 over 96 traces on a screen that left four modes dark, against \(>5\times10^{8}\) for the controls. Its geometry does not show to any second-order read: every mode is lit, so the windowed covariance is white, the per-sample power profile flat and the lag correlation zero, and on the codec's own path every second-order key-free detector reads noise out to 10 s of capture. A screen that left even one mode dark would hand an observer its width from −15 dB in 10 s, and resampling to another rate would not remove that. Its geometry does show to fourth order. The composition \(X = AB\) with \(A\) unit-modulus and \(B\) orthonormal is the exact input to the Analytical Constant Modulus Algorithm and to Iterative Least Squares with Projection, and given the width, the row offset and a capture longer than \(K^2\) rows either solves for the coefficient matrix, at every geometry measured; the two facts they use are properties of the construction rather than of the seed, and no design that keeps a constant-modulus alphabet can withhold them. What a blind solution leaves undetermined is a per-mode constant phase, and that is the gap the key sits in.\\
+The payload rides a differential rotated per (row, mode) by the keystream, which costs no power and no rate and which no constant phase cancels. Under it ACMA still recovers the coefficients at 1.000 --- the concentration is visible, and is not the thing the key holds --- while an attacker holding those exact coefficients reads \textbf{BER 0.4962} across every constant rotation available to them, and the key holder reads \textbf{0.000000}. The constellation an eavesdropper would slice closes at 0.008 against 1.000 for a key holder, so \(M\) itself is unreadable without the key. The rotation is indexed by absolute row, which a late-starting capture does not know, so the receiver \emph{measures} it: at the true alignment the de-rotated constellation closes and at every other it does not. The separation is therefore narrow and stated as such --- geometry public, payload keyed --- and it is the last place a parameter survives: how much of a stream to prime the acquisition with is measured too, in §RF-8, and nothing is left for a caller to choose.
+}
+\setbox\typesetfront=\vbox{%
+  \hsize=\textwidth \linewidth=\textwidth \columnwidth=\textwidth
+  \unvcopy\typesettitle
+  \vspace{2ex}
+  {\centering\small\bfseries Abstract\par}
+  \vspace{0.6ex}
+  \begin{list}{}{\setlength{\leftmargin}{0.06\textwidth}\setlength{\rightmargin}{0.06\textwidth}%
+    \setlength{\listparindent}{1.2em}\setlength{\itemindent}{0pt}\setlength{\parsep}{0.5ex}\setlength{\topsep}{0pt}}
+  \small\item\relax\typesetabstract
+  \end{list}
+  \typesetrule
+}
+% CHOSEN: the title block and abstract go across both columns only if they leave ten lines of each
+% column for the body on page 1. Ten lines is about a sixth of the page: enough that page 1 reads as
+% the start of the paper, small enough that only a long abstract moves into the columns.
+\ifdim\dimexpr\ht\typesetfront+\dp\typesetfront+10\baselineskip\relax<\textheight
+  \twocolumn[\unvbox\typesetfront]
+\else
+  \twocolumn[\unvbox\typesettitle\typesetrule]
+  {\centering\small\bfseries Abstract\par}\vspace{0.6ex}
+  {\small\setlength{\parskip}{0.5ex}\noindent\typesetabstract\par}
+  \typesetrule
+\fi
+\makeatother
+
+\textbf{Companion paper.} This builds directly on \emph{Entroptics: reading any 2-D signal as a finite optical aperture at its own entropy-matched resolution} (\href{https://github.com/Agience/entroptics/blob/main/research/PAPER.md}{\texttt{entroptics\ research/\allowbreak{}PAPER.\allowbreak{}md}}), and assumes it. Section references of the form §8 or Definition 8.2 refer to that paper; sections of this one are written §RF-3. The engine is not a dependency of the argument --- it \emph{is} the argument. Nothing here re-derives an optical read; where one is needed it is named and called.
+
+\section{RF-1. Introduction}\label{rf-1-introduction}
+
+A modem is usually a chain: filter, correlate, track, equalize, slice. Each stage carries constants, and each constant is a claim about a channel someone measured once. The companion paper reads a two-dimensional signal as a finite aperture whose resolution the signal's own entropy fixes, with no fitting and no tuned constant. This paper asks what a radio looks like if the \emph{transmitted field} is such an aperture and the aperture is keyed.
+
+The answer is short, which is the point. A row of the screen is \(K\) symbols on \(K\) orthonormal modes; the modes come from the key; the screen is raveled to IQ and put on the air. To receive, ravel the capture back into rows and project onto the same modes. Composition is \(A B\) and reception is \(S B^{\mathsf H}\), and because \(B\) has orthonormal rows the adjoint \emph{is} the pseudoinverse, so no transform appears at either end. There is no pulse shaping, no cyclic prefix, no pilot, no equalizer, and no FFT. Two mechanical tests in the package enforce the absence: one scans the shipped source for any spectral or filtering call, the other audits what reception requires --- not only the signatures of the readers but the set of them, because a parameter can be shared by offering two entry points as easily as by adding an argument.
+
+What makes it a \emph{radio} rather than a curiosity is that the receiver is not told the geometry. A transmission is contiguous data that anyone who knows the mathematics can read; if it is secured, the one thing agreed in advance is the key, and for an open broadcast not even that. Everything else --- how wide the screen is, where a row starts, which alphabet rides them, which of the two payload formats is riding at all, and how far the two oscillators sit apart --- is a read. §RF-3 gives each read, what it costs, and where it fails.
+
+The security claim is narrow, in three parts that are separable and separately measured. The waveform's energy is visible to any radiometer, but a standard blind battery cannot \emph{classify} it as a structured signal. Its \emph{geometry} does not show to second-order reads, because every mode is lit, and does show to fourth-order ones: two published blind-separation algorithms solve for the aperture itself given the width, the row offset and a long enough capture. Its \emph{payload} is not recoverable, and the second fact is what fixes the form of the third. Blind separation leaves a per-mode constant phase; a differential cancels a constant phase; so a differential carrying nothing more is readable at BER 0.0000 by an attacker holding only the recovered coefficients. The keyed per-row rotation of §RF-2.3 is the coordinate that closes, and §RF-5.5 measures what closing it is worth.
+
+\textbf{Convention.} \(L\) is the screen width in samples, \(K\) the modes carrying payload --- \(K = L\), every mode lit, or \(L - 3\) above a row beacon, with only a message's final row using fewer --- \(M\) the alphabet order, \(T\) the number of rows. A capture is a 1-D complex vector; a screen is \(S \in \mathbb{C}^{T \times L}\); mode coordinates are \(A \in \mathbb{C}^{T \times K}\). The key is a seed accepted as \texttt{bytes}, \texttt{str} or \texttt{int} and never truncated. \(\nu\) is the carrier offset in cycles per row. Figures quoted at \(K < L\), most often \(K = 60\) at \(L = 64\), were measured on an earlier screen that left its last modes dark and placed the geometry by the dark-mode read; they are kept where the quantity they measure does not turn on that read, and marked as such where it does.
+
+\section{RF-2. The construction}\label{rf-2-the-construction}
+
+\subsection{RF-2.1 The ravel}\label{rf-21-the-ravel}
+
+\textbf{Definition RF-D1 (Screen and IQ)} --- For a capture \(x\) and width \(L\), the screen is the reshape of \(x\) into rows of \(L\), discarding a trailing partial row; \texttt{to\_\allowbreak{}iq} is the inverse ravel. This is the entire domain reduction: IQ is 1-D and the companion construction reads 2-D, and nothing else about radio crosses the boundary. A partial row is not an observation of the screen and is dropped.
+
+The ordered axis is time and the feature axis is position within a row. This assignment matters for the reads: the companion's fold (Definition 2.2) coarsens only the feature axis, and its footprint dichotomy (Definition 8.3) labels persistent-narrowband against broadband-transient on the assumption that the feature axis is frequency. Here it is not, so those labels do not transfer and are deliberately not reported; the fills themselves are generic and remain available.
+
+\subsection{RF-2.2 The keyed aperture}\label{rf-22-the-keyed-aperture}
+
+\textbf{Definition RF-D2 (Keystream)} --- All keyed material is drawn from SHAKE-256 (FIPS-202) with length-prefixed domain separation, so no two \texttt{(\allowbreak{}domain,\allowbreak{}\ nonce,\allowbreak{}\ seed)\allowbreak{}} triples collide. \texttt{numpy}'s PCG64 is not used: its state is recoverable from a handful of outputs, so a known plaintext would expose every other stream drawn from the same seed. The seed encoding is injective and untruncated, with a type tag so that the integer \texttt{0x41} and the byte \texttt{A} differ.
+
+\textbf{Definition RF-D3 (Aperture)} --- The aperture is
+\typesetdisplay{B(\text{phase},\nu) \;=\; C \, E(\text{phase}) \odot r(\nu), \qquad E_{m\ell} = \tfrac{1}{\sqrt L}e^{2\pi i m(\ell+\text{phase})/L},}{\begin{gathered}B(\text{phase},\nu) \;=\; C \, E(\text{phase}) \odot r(\nu),\\ E_{m\ell} = \tfrac{1}{\sqrt L}e^{2\pi i m(\ell+\text{phase})/L},\end{gathered}}
+where \(C\) is a canonical QR factor of a keyed complex Gaussian \((L,L)\) draw and \(r(\nu)_\ell = e^{2\pi i \nu \ell/L}\). \texttt{mode\_\allowbreak{}basis(\allowbreak{}K,\allowbreak{}\ L,\allowbreak{}\ seed)\allowbreak{}} is the first \(K\) rows. A transmission uses all \(L\) (Definition RF-D4).
+
+Three properties earn their place and each is load-bearing later:
+
+\textbf{Nested in \(K\).} The \(K\)-mode aperture is the first \(K\) rows of the one \(L\)-mode aperture for \((L, \text{seed})\), not a fresh draw per \(K\). A transmission lights all \(L\); nesting is what lets a message's final row use fewer modes of the same aperture rather than a different one, and what lets a row beacon take the bottom modes with the payload above it (§RF-2.3). It is a wire-format property, not an implementation detail, and it is not confined to the aperture: the analog mode's spread operator is nested in \(D\), which is what makes the dimension it carries measurable rather than agreed (§RF-2.5).
+
+\textbf{Continuous in two coordinates.} A mode shape is a function of a real argument, so the receiver evaluates it wherever its sampling instants actually landed. \texttt{phase} is a real number of samples on the sample axis; \(\nu\) is a real number of cycles per row on the mode axis, because a carrier offset multiplies sample \(n\) by \(e^{2\pi i f n}\) and within a row that shifts the mode index by \(fL\). Neither is an impairment to be corrected; both are parameters to be measured. Orthonormality survives both exactly --- each is a unitary diagonal --- measured \(\lVert BB^{\mathsf H} - I\rVert < 10^{-13}\) at every value tried (worst \(9.2\times10^{-14}\), over phase and carrier together).
+
+\textbf{The family is forced.} Requiring the rows to stay orthonormal at \emph{every} real offset is requiring shift-covariance, and the eigenfunctions of translation are the complex exponentials. So a continuously shiftable aperture is necessarily a keyed mixture of them, and the key lives in the mixture: each mode is a dense keyed combination of every exponential. One keyed coefficient per mode would be one exponential per mode, which is OFDM; the mixture is what makes it not that.
+
+\subsection{RF-2.3 The differential payload}\label{rf-23-the-differential-payload}
+
+\textbf{Definition RF-D4 (Compose)} --- Bits are packed MSB-first into \(\log_2 M\)-bit symbols laid out \((T, K)\), one differential stream per mode, with \(K = L\) --- every mode lit, or \(L - 3\) above a row beacon --- and a message's final row carrying its remainder on the first modes of the nested aperture. With \(d_{tk}\) the \(M\)-PSK symbol, \(\rho\) a keyed unit-modulus reference row and \(r_t\) the row's radius,
+\typesetdisplay{A_0 = \rho, \qquad A_{t+1,k} = A_{tk}\, d_{tk}, \qquad \text{IQ} = \operatorname{ravel}(\operatorname{diag}(r)\, A B).}{\begin{gathered}A_0 = \rho,\\ A_{t+1,k} = A_{tk}\, d_{tk},\\ \text{IQ} = \operatorname{ravel}(\operatorname{diag}(r)\, A B).\end{gathered}}
+
+Differential \emph{across rows}, per mode: row \(t\) is row \(t-1\) rotated by the symbol. The receiver therefore needs no phase reference at all, which is what lets the waveform carry no pilot; the differential also cancels the row-rate part of any carrier offset for free. \(M\)-PSK rather than QAM for the same reason --- a differential amplitude would need a phase reference anyway.
+
+\textbf{The reference row is keyed, not all-ones.} An all-ones row puts \(\sum_k B_k\), the plain sum of the aperture rows, on the air: one exact linear equation in the unknown aperture, free to anyone who knows the scheme, and identical on every transmission under that key. \texttt{\_\allowbreak{}reference\_\allowbreak{}row} draws unit-modulus phases from the keystream instead, at no cost in power.
+
+\textbf{The differential carries a keyed rotation, and without it the key protects nothing.} Each symbol is multiplied by a keyed unit-modulus \(\rho_{tk}\) before the running product, so what rides mode \(k\) from row \(t\) to \(t+1\) is \(d_{tk}\rho_{tk}\). §RF-5.4 gives the reason in full; the short version is that ACMA recovers \(A\) up to a per-mode \emph{constant} phase, and a constant per-mode phase is exactly what the differential cancels --- so the property that lets the waveform carry no pilot is also the one that would hand an attacker the bits. A rotation that changes every row is not cancelled by anything. It costs no power and no rate, leaves the per-mode energy profile untouched (so the width and the row read exactly as before), and leaves the screen's second-order statistics unchanged.
+
+\textbf{Every row goes out at its own power.} With \(A\) unit modulus and \(B\) orthonormal, \(\lVert A_t B\rVert^2 = K\) exactly on every row, and that alone hands a key-free observer the row period: the energy of windows one row long has no variance at the true width and the row offset, and \(|y|^2\) has a spectral hole below the row rate. Measured from 417 ms at \(L = 64\), the windowed-energy contrast ranks the true width first of 585 at \(z = 24\) from 0 dB, and an alignment-free presence read gives \(z = 13\) (\texttt{research/\allowbreak{}row\_\allowbreak{}energy\_\allowbreak{}leak.\allowbreak{}md}). So row \(t\) is sent scaled by \(r_t\), with \(r_t^2 \sim \mathrm{Gamma}(L, 1/L)\): the mean of \(L\) keyed unit exponentials, in its own keystream domain, indexed by the screen row from the reference row as row 0 and seekable like the rotation. Shape \(L\) rather than \(K\) is what makes it exact. The energy of \(L\) samples of white noise is Gamma(\(L\)) about its mean, and a row scaled this way has that law in an aligned window and the same variance to \(O(1/L)\) in a straddling one. Measured after the change, every energy statistic sits inside the noise-only range at both widths, both rates, keyed and open. It costs 0.1--0.2 dB on the coded thresholds and moves PAPR at the \(10^{-4}\) point to the Gaussian's (9.42 → 9.64 dB at \(L=64\)). The differential read is phase-only and never needs \(r_t\). The coherent read divides \(r_t / r_0\) out from the key. In the open mode \(r_t\) is the sender's own draw, not a public stream, because a public stream indexed by the absolute row would bring back the join problem below. The open coherent reader measures each row's level instead, at 0.1--0.3 dB. The radius is common to a row's modes, so it withholds nothing from ACMA (§RF-5.5): an aligned observer divides each row by its own energy and has constant modulus back. It closes the row-energy leak and no other; the rank, fold and ripple leaks a spare mode would add are closed by lighting every mode (§RF-5.3).
+
+\textbf{The open mode carries no rotation, and so is joinable at any point.} The rotation defends the payload, and where there is no key there is nothing to defend: with \texttt{seed=\allowbreak{}None} the aperture, the reference row and the rotation are public by construction, so an observer and a receiver are the same party. The open mode therefore carries no rotation --- and with it goes the cost it was imposing, because a rotation indexed by the absolute row is the whole of the join problem. It is why a keyed receiver must find the row it tuned in on, and why that search grows with how long the stream has been running (§RF-9.1). Measured on 128-row fragments of an unkeyed stream at the default reach: with the rotation, a fragment cut at row 4500 reads its alignment as row 65 and the payload at BER 0.6316; without it, row 0 at BER 0.0000, and fragments from row 0, 100, 4500 and 5000 all read alike. The optical reads do not move --- resolved 2 either way, strehl 0.0254 against 0.0262, dominance 0.010 against 0.011, fill 0.9077 against 0.9088 --- so the rotation was never what made this waveform read as noise. A keyed stream keeps the rotation and keeps the search; an open one needs neither.
+
+\textbf{A keyed stream can carry the row rather than be searched for it.} The rotation is indexed by the absolute row, so a receiver that joins late holds the rows but not their numbers, and the search for the number it landed on grows with how long the stream has run (§RF-9.1). \texttt{compose(\allowbreak{}.\allowbreak{}.\allowbreak{}.\allowbreak{},\allowbreak{}\ beacon=\allowbreak{}True)\allowbreak{}} carries the number instead. A keyed beacon occupies the bottom \texttt{BEACON\_\allowbreak{}MODES\ =\allowbreak{}\ 3} modes and the payload rides above it, which keeps the aperture nested and a short final row still short. The beacon rides the same differential as the payload, so it needs no reference row and reads from a fragment; its own rotation is indexed by the row \emph{within} a frame of \texttt{BEACON\_\allowbreak{}FRAME\ =\allowbreak{}\ 32} rows rather than by the absolute row, which is what makes it readable by a receiver that does not yet know the answer. That rotation therefore repeats every frame, which is safe where it would not be for the payload: cancelling it yields the difference of two frame indices, and a frame index is not secret. The payload's rotation stays indexed by the absolute row and never repeats, so §RF-2.4 is untouched.
+
+Each frame carries a 32-bit row index three times over BPSK, and the receiver tries the frame's 32 phases and keeps the one whose repetitions agree --- a comparison between measured candidates, with no level and nothing added to carry a sync word. Measured: the row is read exactly at 0, 1, 37, 5000 and 1234567, at agreement 1.000, while the same beacon read on a wrong key agrees 0.604 and names the wrong row. Blind through \texttt{decode} on the earlier screen (\(K = 60\), the dark-mode read), a beaconed stream cut at row 5500 --- past the 4096-row search reach --- reads \(L=64\), \(K=60\), \texttt{beacon=\allowbreak{}True}, row 5500 and BER 0.0000, where the same cut of an unbeaconed stream cannot be read at all. The beacon outlives the payload it serves, as it must, since a row read wrong costs everything: it is still exact at 3 dB, where the payload reads BER 0.217 and is not usable uncoded.
+
+What it costs is the modes and the claim. A beaconed link carries \(L - 3\) payload modes where a plain one carries \(L\), and the waveform adds something to itself --- this is a pilot, in the one sense that matters, and it is keyed and looks like noise but it is there. Whether a beacon rides is measured rather than declared: \texttt{\_\allowbreak{}alphabet} reads both hypotheses off the same differential --- payload across every mode with the row hunted for, and payload above a beacon with the row read out of it --- and the larger closure names which is riding, the same move that tells the differential and coherent payloads apart (§RF-3.6).
+
+\textbf{Nothing is sent that the message did not ask to send.} A message that does not fill its last row is carried on \emph{fewer modes} in that row, not padded to a full grid --- which the nested aperture makes free, since a short row is the same aperture used less far. The only rounding left is inside the final symbol, under \(\log_2 M\) bits. What the removal buys is not shorter transmissions --- the last row still occupies \(L\) samples on the wire --- but a darker one: the modes the message does not reach carry no energy at all, measured at \(10^{-17}\) against 1.069 for a mode in use, so the final row radiates in proportion to what it carries. Measured at \(K = 60\), at 1, 17 and 59 modes of 60 it draws 1.7\%, 28\% and 98\% of a full row's power. Under a grid filler those same modes carry keyed noise at full power, which is up to \(K\log_2 M\) bits per transmission that the message never asked to send, radiated at the same amplitude as the ones it did.
+
+The receiver is the part that does not know: \texttt{read} projects onto all \(K\) modes of every row, so a short final row still returns up to \(K - K_{\text{last}}\) modes of bits that decode from nothing. A caller needing the exact payload length carries it in its own framing, which is the same place a length belongs in any framing.
+
+\subsection{RF-2.4 The coherent payload}\label{rf-24-the-coherent-payload}
+
+The differential mode buys carrier-blindness by spending the row-to-row phase, which costs the \(\sim\)3 dB every differential link costs and confines it to PSK. The coherent mode spends one \emph{row} instead: row 0 is the keyed reference the receiver measures the channel's complex gain with, and square QAM rides the rest. The receiver takes \textbf{one gain for every mode}, the mean of the reference row's \(K\) per-mode reads, not each mode's own. Every keyed mode spans the whole band, so a channel reaches each mode's coordinate with nearly the same gain, and the rest of what it does is mixing between modes, which no per-mode gain undoes. A per-mode read off one row is that gain plus the row's noise and its share of the mixing, and dividing it out spends both again on every symbol. Measured in the mesh's fast path at the true geometry (40 frames a cell, per-mode / one gain): 4-QAM 1/2 at 8.6 dB 34 / 40 frames against 40 / 40, 16-QAM 1/2 at 12 dB 30 / 40, 64-QAM 2/3 at 19.6 dB 29 / 40. At equal rates, with the receiver's samples half a sample off the sender's, it reads noiseless 16-QAM at −31.3 dB against −27.0 dB (\texttt{research/\allowbreak{}rank\_\allowbreak{}leak.\allowbreak{}md}, ``Blind decode on the current waveform''). Measured clean and error-free on the earlier screen at \(K=63\), \(L=64\): 3.93 bits/sample at \(M{=}16\), 5.90 at \(M{=}64\), 7.86 at \(M{=}256\). The overhead is one row in \(T{+}1\) --- 1.7\% at \(T=600\) --- where OFDM spends around 14\% on cyclic prefix, pilots and guard tones.
+
+Carrier offset is what this mode has to survive, since the row-rate phase is not cancelled for free here, and it is handled by measurement rather than by tracking: there is no estimator loop and no tuned constant. The offset splits in two. The mode-axis half is a coordinate of the aperture (Definition RF-D3), so passing the measured \(\nu\) to \texttt{read\_\allowbreak{}qam} removes it exactly. The row-axis half, \(e^{2\pi i \nu t}\), accumulates against row 0 --- the single reference this mode measures gain from --- and the read divides it out of row \(t\). Measured at \(L=64\), \(T=600\), clean: with the rows de-rotated by \(e^{-2\pi i \nu t}\) and \(\nu\) passed, BER is 0.0000 at every \(M\) from 16 to 1024 and every offset to \(10^{-3}\) cycles/sample; without that step the same frames read \(\sim\)0.42.
+
+\subsection{RF-2.5 The analog embedding}\label{rf-25-the-analog-embedding}
+
+A vector may ride as a \emph{direction} rather than as bits: \texttt{compose\_\allowbreak{}embedding} spreads a \(D\)-dimensional complex vector over \(N = \lceil D\cdot\text{spread}\rceil\) samples through a keyed operator with orthonormal columns, and \(N/D\) is the processing gain. Channel loss then becomes meaning-preserving drift rather than bit errors --- no cliff and no quantizer. Measured cosine fidelity at \(D=768\), spread 1: 0.9915 at 18 dB, 0.9680 at 12 dB, 0.8863 at 6 dB, 0.6809 at 0 dB. Those figures predate the nesting described below, which changed the operator and therefore the wire for this mode; re-measured after it, on an independent random direction, they read 0.9922, 0.9703, 0.8922 and 0.7030. Nesting takes the first \(D\) columns of one \(N\)-dimensional draw instead of drawing \((N, D)\) afresh, which is the same distribution seen through a different slice, and it costs nothing measurable.
+
+\textbf{\(D\) is measured, not shared.} Nothing in the physics requires otherwise. A spread operator drawing a fresh basis per \(D\) makes every \(D\) an unrelated subspace, findable only by trying them all --- a fresh QR per candidate, 1958 s to sweep a 1536-sample capture. The aperture is \emph{nested} in \(K\) for a kindred reason --- a short final row is the same aperture used less far, not a fresh basis --- and the nesting is wire format rather than an implementation detail. The spread operator is nested in \(D\) for the same reason, and so the energy outside the first \(D\) columns falls monotonically and reaches zero exactly at the dimension sent, so the read bisects: measured, \(D\) recovered exactly at 768, 300 and 64 over spreads of 1, 2 and 4, in 2.4 to 123 ms, each reconstructing the direction at cosine 1.000000.
+
+Under noise the read returns \(N\) rather than \(D\), and that is safe rather than wrong: noise fills every dimension, no residual reaches zero, and the read reports the whole space. Reading at \(D = N\) still recovers the direction --- cosine 0.9962, 0.9849, 0.9418 and 0.8202 at 18, 12, 6 and 0 dB --- because the surplus dimensions carry only what the channel put there. What is lost is the knowledge of \(D\), not the message. The companion's rank-edge read (\texttt{reads.\allowbreak{}occupied\_\allowbreak{}modes}) cannot substitute: it wants two flat levels, and an embedding's coefficients are the vector's own components, so a dimension the vector barely uses is indistinguishable from one it never had --- measured, that read lands at 1533 of 1536 against a true 768 even where the signal band sits \(127\times\) above the noise band.
+
+The embedding rides no screen, so a screen reader finds no aperture in it and says so in the only way this construction offers: the evidence. Measured with the dark-mode read the codec used before every mode was lit: score 0.675 against \(6.0\times10^{-16}\) for a real screen, margin 1.15 against \(3.1\times10^{14}\), closure 0.0303 against 1.0000 --- it reads as noise, sitting beside pure noise's 0.719, 1.00 and 0.0066. That is the correct reading of a capture with no aperture in it, and \texttt{decode}'s contract already says the evidence is what a caller judges rather than the bare answer.
+
+\subsection{RF-2.6 The sender mark}\label{rf-26-the-sender-mark}
+
+Rotating each mode of the aperture by its own keyed phase leaves the payload untouched, because the read is differential across rows and a constant per-mode phase cancels exactly in \(A_{t+1}\overline{A_t}\). So a sender identifier is a channel that costs nothing: no power, no rate, no change to how the transmission looks. It is an \emph{address, not a secret} --- anyone holding the aperture can read it, so it says who sent a transmission, not who may read it.
+
+\textbf{It outlives the payload by about 15 dB.} The mark is a constant per-mode phase, so it accumulates coherently over every row of the capture, while each payload symbol gets one row and no more. Measured with five candidates: at 6 dB the payload reads BER 0.093 and the sender resolves at \(z = 10.33\); at 0 dB the payload is at 0.328 and the sender still resolves at 8.63; at \(-9\) dB the payload reads 0.479 --- which is noise --- and the sender resolves at 3.91 against a cutoff of 2.58. It survives a thousand candidates too, the multiplicity correction lifting the cutoff to 4.06 while the true sender holds \(z = 6.95\) at \(-3\) dB.
+
+So a holder of the aperture can identify a transmitter it cannot read, far below the SNR at which the link works at all. For a public broadcast that is simply what an address is. For a keyed link it means the mark is readable by anyone who has ever held the key, at ranges where the payload is not, and a transmitter that wants to be unidentifiable should send unmarked --- which costs nothing, since the mark was free.
+
+Identification is a decision, so it is made against a null. \texttt{sender\_\allowbreak{}resolve} uses the companion's \texttt{reads.\allowbreak{}coupling} (Theorem 5.6), standardizing the alignment of the recovered signature against the exact permutation null of re-pairing the two sides, with the \(K\) modes as the ordered axis --- the right null here, since it asks whether this pattern across modes aligns better than a random relabelling of the modes would. The level is corrected for the number of candidates, as the companion's \texttt{sweep} corrects for the number of patches. Measured with five candidates, \(K=60\): the true sender reads \(z = 10.85 / 10.71 / 10.33\) at clean / 12 dB / 6 dB and resolves; the nearest stranger reads \(1.80 / 1.63 / 1.44\) and does not, against a cutoff of 2.58.
+
+\section{RF-3. Discovery: what is measured}\label{rf-3-discovery-what-is-measured}
+
+\subsection{RF-3.1 What may be shared}\label{rf-31-what-may-be-shared}
+
+\textbf{The key, and nothing else.} Not a nonce, not a width, not a mode count, not an alphabet, not a row offset. This is enforced mechanically, in two layers. A signature audit asserts that \texttt{decode} and \texttt{discover} require only a capture and that \texttt{seed} defaults to the open broadcast, failing if an argument appears. An entry-point audit then checks the readers as a \emph{set}, because a signature audit watches one door and cannot count them: a choice between two payload readers is a shared parameter whenever \texttt{decode} assumes one of them, and every signature in the package can be clean while it does (§RF-7). A reader that needs more than a capture and a key must now be declared an exception with its reason, which makes adding one a deliberate act rather than a drift.
+
+Both of those layers check what reception \emph{requires}, and an optional argument is seen by neither while still being a knob a caller can turn. So a third layer pins the optional arguments as a set: \texttt{seed}, \texttt{candidates}, \texttt{carrier\_\allowbreak{}span} and \texttt{join\_\allowbreak{}rows}, each with a provenance entry in §RF-9.1. A companion test requires each of them to \emph{change something} when it changes --- a candidate range excluding the true width cannot return it, a carrier outside the span is not found and inside it is, a join past the reach does not align and inside it does. A bound that nothing reads is worse than a tuned one, because it reports a setting the read does not have.
+
+The audit checks required arguments, so two cases need naming beyond it. No receive path takes a \texttt{nonce} at all, by signature: an optional one would pass the audit while being a \emph{parameter of the transmission}, since it changes the aperture and the reference row and the receiver cannot decode without being told it. And no receive path takes a row count: a declared cost knob whose default decides accuracy is a parameter in substance (§RF-3.6), so the read finds its own rows. The streaming front end holds to it too: \texttt{acquire} takes the buffer and reads the prefix it needs (§RF-8). \texttt{read\_\allowbreak{}beacon} is named as an exception on the other ground: it is a component of the blind read rather than a receive path, taking the differential \texttt{decode} has already formed, and \texttt{decode} reaches it by measurement (§RF-2.3), so no caller is ever obliged to hand it anything.
+
+One seed keys one waveform. Two transmissions under the same seed share an aperture and a reference row, and they also share the per-row rotation \(\rho_{tk}\) --- which is the entire payload defence (§RF-2.3). An observer holding both captures forms \((d_1\rho)/(d_2\rho) = d_1/d_2\) and the rotation divides out. Measured at \(K=60\), \(L=64\): the ratio of the two differentials closes on its alphabet at \textbf{1.0000} and yields the symbol difference \((s_1 - s_2) \bmod M\) on \textbf{100\% of symbols}. Under two different seeds the same ratio closes at 0.0045 and yields nothing.
+
+This is the classical two-time pad and nothing about it is special to this waveform. Its severity here follows from where the defence sits: with the rotation carrying it, reuse exposes the difference of the \emph{payloads} rather than only the geometry, which is a number worth having in front of whoever owns the key schedule.
+
+\textbf{A fresh key per transmission is a precondition of this construction, not a recommendation.} Key management sits above this layer and is assumed to provide it; the layer below neither detects nor prevents reuse, and cannot, since a repeated \(\rho\) is indistinguishable from a correct one without a second capture to compare against. Given that precondition the payload defence of §RF-5.5 holds as measured, and the rest of this paper assumes it throughout. Carrying a nonce in the transmission does not survive the streaming case, and the failure is measured rather than argued: a capture starts where the receiver switched on, and a late start \emph{truncates} a head block rather than shifting it, so a one-sample cut is as fatal as a five-hundred-sample one and the property that any window reads is lost.
+
+\subsection{RF-3.2 The width and the row}\label{rf-32-the-width-and-the-row}
+
+These are the two discrete coordinates and they are found by enumeration against an exact read: the \emph{constant-modulus read}. Every mode is lit, and the coordinates a row carries are unit modulus (or a square lattice's few levels), so at the true width, row offset, scale and carrier each row's energy is spread evenly over the keyed modes. At any other cut the rows are re-cut across mode boundaries, each coordinate is a mixture of many, close to complex Gaussian, and the row's mode energies, normalized over the row, are a draw from the flat Dirichlet. The read is each row's Shannon entropy over its mode energies against \(\log_2 m\), the even spread, divided by the flat Dirichlet's mean deficit --- both library reads, \texttt{entropy.\allowbreak{}shannon\_\allowbreak{}bits} and the exact \texttt{entropy.\allowbreak{}dirichlet\_\allowbreak{}entropy\_\allowbreak{}moments}. It is 0 at the true geometry noiseless and \(\approx 1\) everywhere else, and dividing each row by its own total takes the per-row radius off exactly.
+
+Measured \(1.4\times10^{-15}\) at the true geometry against 0.6--1 across wrong widths and wrong offsets: a cliff, so the argmin needs no threshold. Under noise the true geometry rises toward 1 --- on 16 modes of unit-modulus coordinates, 0.43 / 0.64 / 0.82 / 0.93 at a per-mode SNR of 6 / 3 / 0 / −3 dB --- and the evidence is how far the rows sit below the null taken together. The scans read the first \texttt{CM\_\allowbreak{}MODES} = 16 modes of each hypothesis; settles and comparisons read all \(L\). Against the dispersion of the mode energies, the second-order form of the same deficit, the entropy separates as well or better: on 160 rows of unit-modulus against Gaussian coordinates, \(z\) 20.0 / 11.5 / 5.6 / 2.2 at 6 / 3 / 0 / −3 dB on 16 modes against 16.6 / 10.3 / 5.1 / 2.0. The read is a projection onto aperture modes and an entropy of the result --- not a correlation against a transmitted template. There is no reference waveform anywhere in it.
+
+\textbf{Widths are compared by significance, not by score.} The read's null is 1 at every width, but its spread is not: one row scatters about it by 0.97 at 2 modes, 0.32 at 16 and 0.16 at 64, the library's exact sd. Over the many offsets and carrier probes of a scan, a narrow width's best chance read therefore sits far below a wide one's, and compared by score the fully blind scan locked a 6 dB and a 3 dB \(L = 64\) capture on width 2 at 0.98. Hypotheses are ranked by \((1 - \text{score})\sqrt{\text{rows}}/\text{spread}(m)\), and both lock on 64. One row's read is held to at most \(1 + 3\,\text{spread}(m)\): a row far above the null --- energy on a few modes --- is no more evidence against a geometry than a Gaussian row, and a message's own short final row is one. Lit on 7 modes of 64 it read 5.3, which on a 14-row burst weighed as much as five Gaussian rows. The cap moves 0.1\% of the null's rows. Dense QAM is weaker evidence than PSK: noiseless, a row of 16-, 64- and 256-QAM reads 0.44, 0.50 and 0.52 where PSK reads 0.
+
+\textbf{This is the read that keys the geometry.} Only a holder of the aperture can place the offset, so an eavesdropper may detect that something is transmitting without being able to align to it. With \texttt{seed=\allowbreak{}None} the aperture is the public zero state and anyone can.
+
+\textbf{It does not, on its own, say the transmission is this one.} The read asks whether some cut of the capture spreads its energy evenly over the keyed modes, and degenerate signals can. A DC level, a single tone and a period-\(L\) repeat each lock a geometry, at width 2 with a score near 0, while Gaussian noise reads 0.96--0.99. So the read separates structure from the absence of it. What it does not separate is this structure from any other.
+
+The alphabet closure is what does that, and the separation there is total: 1.0000 for the waveform against 0.011 to 0.013 for every impostor above.
+
+\textbf{Which fixes where the decision belongs.} \texttt{Discovery.\allowbreak{}locked} means only that the sweep returned a width, and the sweep almost always returns one; it is not a report that a transmission is present, and a reader that judges on it accepts noise. Measured with the dark-mode read, judged on \texttt{locked} alone, \texttt{rx} prints pure noise as \texttt{lock:\allowbreak{}\ L=\allowbreak{}138,\allowbreak{}\ K=\allowbreak{}136,\allowbreak{}\ M=\allowbreak{}8}, reads 8008 bits from it and exits 0, and \texttt{StreamReceiver.\allowbreak{}acquire} takes noise as a lock and streams 54240 bits of it. A test asserting \texttt{ok\ is\ bool(\allowbreak{}rx.\allowbreak{}locked)\allowbreak{}} cannot see either --- it compares the return value to the state that produced it.
+
+The boundary that prevents it is this. \textbf{The codec decides nothing}: \texttt{decode} and \texttt{receive} return their best read together with the evidence --- score, margin, closure --- because choosing a level is exactly what this construction refuses to do on a caller's behalf. \textbf{A reader may decide}, and both of the above are readers rather than codec: a receiver has to answer whether to keep the bits. So each declares an operating point, visible at module scope with the measurements behind it and overridable by the caller, in the sense of §RF-9.1 --- a reader's risk level is a declared input, and it lives in the reader.
+
+\textbf{But not a level on the closure, which does not work.} The closure degrades with SNR --- measured on one transmission, 1.000 clean, 0.888 at 18 dB, 0.611 at 12, 0.143 at 6 and 0.030 at 3 --- so a level set high enough to reject a tone also rejected a 6 dB link decoding at BER 0.095. What is stable is the ratio to the null. A closure computed on unkeyed data is the modulus of a mean of \(TK\) unit phasors and so falls as \(1/\sqrt{TK}\), a scale the capture states rather than one anybody picks, and \texttt{closure\_\allowbreak{}significance} reports the ratio to it.
+
+Against that scale the separation is wide and stable. Over twelve noise realizations the worst impostor reads \(3.66\times\) the null; five tones reach at most \(2.34\times\), a DC level \(2.08\times\), a period-\(L\) repeat \(2.30\times\). A transmission reads \(137.7\times\) at 18 dB, \(96.1\times\) at 12, \(57.5\times\) at 9 and \(22.5\times\) at 6, where it decodes at BER 0.095. The readers sit at \(8\times\), near the geometric middle of that gap: \(2.2\times\) clear of the worst impostor and \(2.8\times\) below the weakest usable signal. It declines 3 dB, at \(5.4\times\), where the payload reads BER 0.217 and is not usable uncoded in any case.
+
+The closure it judges is measured on the whole capture at the geometry just found, not on whatever prefix the acquisition stopped widening at --- that prefix is minimal by construction, stopping the moment the geometry and the alignment settle, so its closure is poor even when the link is healthy. Testing there rejected a 6 dB stream that decodes at BER 0.094. The sweep is finished by then, so measuring again costs one projection. So a receiver must read both, and a receiver that scans a band with a carrier in it will take a confident geometry lock on the carrier and be told by the closure that nothing is riding it. The two reads answer different questions, and neither substitutes for the other.
+
+\subsection{RF-3.3 The mode count is not read}\label{rf-33-the-mode-count-is-not-read}
+
+Every mode is lit, so there is no occupancy to measure. \texttt{Discovery.\allowbreak{}K} is always \(L\), or \(L - 3\) when a beacon rides, which the beacon test of §RF-2.3 decides, and a reader takes the payload's width from it. A message's final row uses fewer modes, the first \(k\) of the nested aperture; the read returns bits from the modes that row does not reach, and the caller's framing trims them (§RF-2.3).
+
+A rank-edge read of the occupancy must not run on a full screen. The companion's \texttt{reads.\allowbreak{}occupied\_\allowbreak{}modes} finds the largest step in the ordered per-mode energy profile and reports its margin over every other step; on a flat profile it returns \(L - 1\) with margin about 2, where a real edge reads 14.6 or more, so run there it would invent an edge.
+
+\subsection{RF-3.4 The alphabet}\label{rf-34-the-alphabet}
+
+Raising a differential symbol to the power \(M\) lands every point of an \(M\)-PSK alphabet on one place, so the alphabet is the smallest \(M\) at which the constellation \emph{closes}. The decision is by closure, not by counting which symbols appeared: a source using two of four points sits at 0° and 270°, which is not the two-point constellation, so \(M=4\) stays distinguishable --- deciding \(M\) by how many symbols appeared cost BER 0.49 on exactly that payload.
+
+Genuine ambiguity is narrower than ``fewer symbols appeared'': it needs the used points to \emph{lie on} the smaller constellation, and where that happens the two readings are the same transmission. A constant source is the limiting case --- one point lies on every constellation --- so it carries no evidence of an alphabet at all, clamps to the smallest real one, and \texttt{redundancy} reads \(\approx 1\). The read reports \(M\), the closure, and the redundancy, so a skewed source is visible rather than masked.
+
+\textbf{The alphabet and the row alignment are read together.} The keyed rotation of §RF-2.3 is indexed by the transmitter's absolute row, and a capture that began after the transmission started does not know that index --- it lost some whole number of rows and no read of the samples says how many. So it is measured: at the true alignment the de-rotated differential lands on its constellation and closes at 1.000; at every other the rotation is the wrong one and it reads \(\approx 0\).
+
+Searching that alignment at a single exponent every candidate alphabet divides --- the ladder's lowest common multiple --- looks alphabet-agnostic and is a trap. For a ladder of powers of two that exponent is the \emph{largest} alphabet, and raising a differential to the sixteenth power amplifies phase noise sixteenfold. Measured, it destroyed the cliff it depended on: the alignment read 11 at 12 dB and 26 at 6 dB against a truth of 0, and a wrong alignment is the wrong keystream, so the payload came out at BER 0.50 where an oracle read 0.0009. Searched \emph{jointly} there is no common multiple to choose: each candidate alignment is scored at each candidate alphabet, and the true pair closes at its own exponent, which for the alphabets in use is small and noise-tolerant. The alignment then reads 0 correctly at every SNR down to 3 dB.
+
+The candidate alphabets are a property of the wire format --- the receiver measures which one is riding, and is told none of them. The payload format is not itself in this category: the receiver measures which of the two rides rather than being told (§RF-7). The category is narrower than it looks.
+
+\subsection{RF-3.5 The carrier and the sub-sample position}\label{rf-35-the-carrier-and-the-sub-sample-position}
+
+These are the two continuous coordinates, and they are settled rather than searched. The carrier is \emph{read} in closed form off the reference row: since \(A_0 = \rho\) is known to a key holder, the samples row 0 puts on the wire are a vector the key alone predicts, and dividing the received row by it leaves the carrier ramp and nothing else. Its slope is the mean per-step phase advance, \(\arg\sum_\ell r_\ell \overline{r_{\ell-1}}\) --- the propagation constant of Definition 6.1 read on the sample axis instead of the mode axis. Measured clean, the read is exact to five decimals at every carrier tried from 0 to 1.92 --- \(\nu = 0\), 0.0192, 0.064, 0.192, 0.64, 1.2 and 1.92 all read back with zero error, 1.92 cycles per row being about 30 000 ppm of a 915 MHz part at 2 Msps and far past the range any oscillator occupies.
+
+That read is unbiased but high-variance under noise --- over 24 draws, \(\sigma = 0.064\) at 18 dB, 0.220 at 12 dB and 0.732 at 6 dB --- so it is one of two candidates and the aperture itself chooses: whichever of the closed-form read and the best probe reads lower on the constant-modulus read (§RF-3.2). Accepting the read only when it lands within some window of the other would be a threshold, and a threshold is a number nobody measured. The pair is then settled by one bounded refinement, kept only if it beats where it started.
+
+\textbf{There is no carrier grid.} A grid of evenly spaced offsets is two arbitrary choices --- how many, and where. The probe is instead the additive recurrence on \(1/\phi\), the canonical low-discrepancy sequence in one dimension since \(\phi\) is the worst-approximable number: the forced answer to ``sample this interval with no parameters''. Its virtue here is that it is \emph{extensible} --- every prefix is already well spread --- so the probing continues until the geometry it returns stops changing, the same stopping rule the row widening uses and for the same reason: agreement of two integers is exact, so no count is chosen. An evenly spaced grid has no such prefix; refining it means discarding it and starting again. Measured, with no grid anywhere: the carrier reads \(+0.0000\), \(+0.0192\), \(+0.0641\), \(+0.1919\), \(+0.6400\) against truths of \(0\), \(0.0192\), \(0.0640\), \(0.1920\), \(0.6400\), at BER 0.00000 throughout.
+
+\textbf{The span is a bound, and behaves as one.} Everything inside it is found and everything outside is declined: measured at spans of 1, 2, 4 and 8 against carriers of 0, 0.19, 0.64, 1.5 and 3.0, each span reads every carrier it covers and misses every carrier it does not, the misses (measured with the dark-mode read) at score \(\approx 0.9\), margin \(\approx 1\) and closure \(\approx 0.1\) where a lock reads \(10^{-15}\), \(10^{13}\) and 1.0000 --- so a reader declines rather than taking a wrong geometry (§RF-3.2).
+
+That monotonicity is a property of the widening rather than of the span, and it rests on the widening comparing its candidates rather than keeping the newest (§RF-3.6). Keeping the newest, a span of 8 misses \(\nu = 0.64\) that spans of 1, 2 and 4 all find: measured on the same capture with the dark-mode read, the widening reads \((64, 0)\) at \(1.25\times10^{-15}\) on its first eight rows, then replaces it with \((130, 80)\), \((121, 120)\) and \((87, 16)\) --- the last at 0.859 with margin 1.07 --- and keeps the last. Comparing the candidates returns \((64, 0)\) at \(1.4\times10^{-15}\), margin \(7.1\times10^{13}\), closure 1.0000. Past about a span of 16 the probe loop's own stopping rule takes effect and the monotonicity goes again; §RF-8 states that limit.
+
+\textbf{There is no carrier-invariant rank locator.} While the last modes were dark, the screen's covariance at the true width was rank-deficient at every carrier --- a carrier is a unitary diagonal on the samples, which changes the row space but not the rank --- and that located the width without a key or a probe: on a 2000-row capture, \(\lambda_{\max}/\lambda_{\min}\) read \(6.6\times10^{7}\), \(7.0\times10^{7}\) and \(6.8\times10^{7}\) at \(\nu = 0\), 0.5 and 1.92 against 1.96 to 2.12 at every other width. It was the rank leak of §RF-5.3 read from the receiver's side. A full screen is full rank at every width, so the locator went with the leak.
+
+\textbf{A negative result worth recording.} The obvious improvement --- estimating the carrier from the \(M\)-th power moment of every differential, via the companion's directional concentration (Proposition 7.2) --- measures phase three to four orders of magnitude more precisely (\(\sigma\) from 0.0658 to 0.00001 at 18 dB) and delivers \emph{exactly zero} end-to-end benefit (BER 0.00401 against 0.00399). The differential already cancels the row-rate phase that estimator sees, while the carrier here is an aperture coordinate causing inter-mode crosstalk, which no constellation estimator observes. It is the same reason a constellation-domain estimator has no place in the coherent read of §RF-2.4.
+
+\subsection{RF-3.6 Adaptive widening}\label{rf-36-adaptive-widening}
+
+Every read above is given some number of rows, and a fixed number is a guess about an SNR nobody measured. Sixteen rows is enough at 12 dB and useless at 6: over twenty captures a sixteen-row read locks twelve times and costs BER 0.319, against 0.121 for a sixty-four-row read that locks twenty times out of twenty. Five captures cannot separate those; twenty can.
+
+\textbf{The stopping rule is not a threshold.} It does not ask whether the margin is good enough, because ``enough'' is a number someone would have to choose. It asks whether the \emph{answer stopped changing}: the width and the row are integers, so agreement between two successive doublings is exact equality. A read that says the same thing when handed twice the evidence has converged; one that keeps moving has not. The ceiling is how many rows the capture contains, which is a fact about the data.
+
+\textbf{What widens is the sweep, and only the sweep.} The width and the row need it: measured, the eight-row sweep reads a width of 134, 39 and 110 on three captures at 6 dB against a true 64, and at 3 dB it is still wrong at sixteen rows. It converges by thirty-two rows even at 3 dB. The alphabet is deliberately \emph{not} in the stopping rule, because it is not what the sweep reads. Including it makes the loop widen for a reason it cannot act on: on a late-starting capture the alphabet cannot be read at all until the row alignment is found (§RF-3.7), so the loop chases an integer that is meaningless at that stage and pays a full sweep --- 255 candidate widths against 8 carrier probes, 2040 geometry evaluations --- for each chase. Measured that way, joining a stream at row 2000 costs six sweeps and 12096 evaluations. Everything downstream of the width is instead read once, on every row the capture has, which is strictly more evidence than any step of the widening could have supplied.
+
+\textbf{Convergence says when to stop, not what to return.} The two are separate questions, and one rule answers both only if the widening keeps whichever candidate came last. A doubling that returns a \emph{different} geometry has not converged, but it has not necessarily improved either, and the scores that proposed the candidates cannot settle it: a shallow read is a noisier one, so a wrong geometry can score low at eight rows on luck where the true one scores higher, and preferring the lower of the two systematically prefers the shallowest read --- measured, that costs the 6 dB lock outright. The candidates are therefore re-read on every row the capture has, which is identical evidence, and compared there. That is the move §RF-3.7 makes on the join axis, where the reaches propose rows cheaply and the rows are then compared by how well each closes over the whole capture. It costs one projection per distinct candidate, and where the capture is healthy it confirms rather than overturns: measured over twenty captures at 3 dB, every one of them proposed more than one geometry and the comparison returned the same answer in all twenty, bit-identical at BER 0.21694 either way. It changes an answer only where the widening genuinely disagrees with itself, which at the span a real oscillator occupies it does not.
+
+\textbf{The continuous coordinates then get the whole capture.} The widening stops when the width and the row settle, and two integers settle long before a real number does, so settling the pair there fixes it on however few rows the integers happened to need. Re-settling them on every row available is cheap --- it does not repeat the width sweep, which is the expensive part --- and closes almost all of the remaining distance to an oracle (§RF-6).
+
+\subsection{RF-3.7 Relative timing: joining a stream already running}\label{rf-37-relative-timing-joining-a-stream-already-running}
+
+A broadcast does not start when the receiver tunes in, and streaming is the ordinary case rather than the exception. The keyed rotation of §RF-2.3 is indexed by the transmitter's \emph{absolute} row, so a capture that began late is de-rotating with the wrong keystream on every row --- and a wrong keystream is not a degraded read, it is BER 0.5. Nothing in the samples announces how many rows were missed. So it is measured.
+
+\textbf{The keystream is seekable.} It is drawn in blocks of 64 rows under a block-indexed domain separator, so starting at row 60000 costs one hash call, exactly what starting at row 0 costs. Without that the hunt would rehash the whole run per candidate and the hashing, not the arithmetic, would be the search.
+
+\textbf{The hunt is a correlation, not a search.} A candidate alignment \(r\) scores \(|\langle (d_{tk}\,s_{r+t,k})^m \rangle_{t,k}|\). The keystream is unit modulus, so normalizing the differential once makes that \((d^m)(s^m)\) exactly --- and the score over all \(r\) is then a shifted diagonal of a single matrix product \(G = S P^\mathsf{T}\), one matmul per rung of the alphabet ladder. This matters practically: the same computation written as a loop over candidates cost 1.40 s of a 1.49 s discovery, and \emph{materializing} the candidates instead --- a 126 MB temporary per rung --- measured slower still. The cost was never the arithmetic.
+
+\textbf{The reach is evidenced, not declared.} A wider candidate range is strictly more places for noise to win: the best wrong closure grows like \(\sqrt{\log R}\) while the true one is fixed by SNR. Reaching 4096 rows unconditionally bought the late join by damaging the ordinary case --- measured, a 400-row capture at 3 dB that \emph{started at row 0} read its alignment as row 2811 and the payload came out at BER 0.4966. So the reach doubles from 32, and at each reach the probe --- how many rows of the differential are weighed --- widens until the alignment repeats. Exact integer agreement, no threshold. A reach the capture cannot evidence does not settle and is not taken.
+
+Settling alone is not sufficient, because a stable noise peak repeats too. The reaches are therefore treated as \emph{candidate rows} and compared by how well each closes over the whole capture --- the same move the carrier makes in §RF-3.5, where a closed-form read and a probe are settled by whichever reads lower on the constant-modulus read. The separation is wide: a true row closes at 0.15--0.63 where that stable noise peak closed at 0.008 --- and the keyless closure is a null, measured 0.003 on a 500-row capture and falling as \(1/\sqrt{TK}\), so the gap widens with evidence rather than narrowing. A comparison between measured candidates is not a cutoff.
+
+\textbf{Measured.} On a clean 3000-row transmission, a fully blind receiver handed a capture beginning at row 0, 1, 32, 100, 500, 2000 or 2900 recovers the correct absolute row in every case and decodes at \textbf{BER 0.0000}. Through the streaming interface, a receiver handed the buffer and told nothing about how much of it to use locks in 1.8 to 3.2 s and then decodes bit-exactly across irregular buffers from join rows 0, 1, 37, 250, 1500 and 3000, and from mid-row cuts of 1, 17, 33 and 63 samples. How many rows that takes is measured, not chosen (§RF-8).
+
+The margin is what bounds it, not the cost. At 12 and 6 dB the alignment is already right on 32 probe rows (0.630 against a best wrong 0.081, and 0.150 against 0.071). At 3 dB it needs 256 (reading 2327, 3564 and 1231 on 32, 64 and 128 rows, and the true row on 256 and 512), so a late join at 3 dB needs roughly 600 rows \emph{after} the join --- with 200 it fails, with 600 it locks and reads BER 0.2207. At 1 dB it does not settle on any probe a capture can offer. That is the edge of the read rather than a number to raise.
+
+\section{RF-4. What an SDR sees}\label{rf-4-what-an-sdr-sees}
+
+\subsection{RF-4.1 With no key}\label{rf-41-with-no-key}
+
+A flat grey band. Measured against a Gaussian-noise null over 96 traces of 16384 samples: spectral flatness 0.9684 for the waveform against 0.9689 for noise, PSD peak-to-mean 1.941 against 1.937, amplitude kurtosis 3.154 against 3.244. There is no carrier to find, no symbol-rate line, and no constellation to recover, because there is no pulse shaping and no symbol clock in the ordinary sense --- a ``symbol'' is a coordinate on a mode, and the modes are dense keyed mixtures of every exponential.
+
+An operator opening a capture in inspectrum should expect to see nothing, and that is the correct result. The tool remains useful for gross RF health --- clipping, DC spike, IQ image, dropouts --- but not for finding the signal.
+
+One statistic was not quite zero on the earlier screen, which left four modes dark, and it is not visible in a waterfall: the eigenvalue detector read a small but perfectly repeatable bias, in every run and under every key. It was measuring the geometry rather than the payload --- the rank deficiency a dark mode leaves --- and §RF-5.2 takes it seriously because a bias that survives averaging is a different object from one that does not.
+
+\subsection{RF-4.2 With the key}\label{rf-42-with-the-key}
+
+Everything. The geometry is measured (§RF-3), the payload decodes, and the sender resolves. Reception is a capture and a key: \texttt{decode(\allowbreak{}iq,\allowbreak{}\ key)\allowbreak{}}.
+
+\subsection{RF-4.3 With no key, publicly}\label{rf-43-with-no-key-publicly}
+
+\texttt{seed=\allowbreak{}None} selects the public aperture, and it is not a published magic number: it is the keyed construction of Definition RF-D2 with the seed field empty --- the same domain-separated SHAKE-256 stream --- which anyone can compute from the spec alone. Every real seed encodes to at least one tagged byte, so no key, not 0 and not \texttt{b""}, lands on it. What the choice rests on is that a hash stream is as white as a keyed one. A low-discrepancy sequence, the plastic number's R2, was measured as the public aperture and is not spectrally white: a full-width open broadcast read 0.45--0.52 occupied against 0.95--1.02 for a keyed one, so a receiver took it for a narrower sender and an observer could tell an open transmission from a keyed one by its spectrum. Under the empty-seed stream a full-width open broadcast reads about 1 occupied, as a keyed one does, and open and keyed transmissions read and look alike.
+
+The public mode is the same code path with no branch. Measured on the earlier screen (\(K=60\), \(L=64\), the low-discrepancy public aperture), for captures beginning at cuts of 0, 1, 17, 64, 255 and 1000 samples: both keyed and public decode bit-exactly at every cut, with the geometry measured correctly each time. The cut costs exactly the rows it lands past and nothing beyond them --- the alignment read recovers which rows those were, reporting row 1 for cuts of 1, 17 and 64, row 4 for 255 and row 16 for 1000, so the comparison is against the payload that survived rather than against the whole message. A keyed transmission read with \texttt{seed=\allowbreak{}None} gives BER 0.4986; a public transmission read with a key gives 0.5046.
+
+\section{RF-5. Security}\label{rf-5-security}
+
+\subsection{RF-5.1 Threat model}\label{rf-51-threat-model}
+
+The adversary holds the capture, knows the algorithm, and does not hold the key. The algorithm is not the secret. Three questions are separable and we answer them separately: can a classifier tell the transmission is a \emph{signal} rather than noise, can the adversary \emph{identify} its parameters, and can they \emph{read} it. Its energy is not in question: any radiometer sees it, at about 20--28 dB more sensitivity than the decoder needs (\texttt{research/\allowbreak{}detectability/\allowbreak{}README.\allowbreak{}md}).
+
+\subsection{RF-5.2 Detection}\label{rf-52-detection}
+
+Ten standard blind detectors were run against a Gaussian-noise null: spectral flatness, PSD peak-to-mean, the symbol-rate line in \(|x|^2\), the \(x^2\) and \(x^4\) spectra, off-zero autocorrelation, amplitude kurtosis, the \(|C_{40}|\) cumulant, the maximum-minimum eigenvalue detector, and gzip compressibility.
+
+A battery of null results proves nothing unless the same battery fires on something, so QPSK, 16-QAM and DSSS were built the conventional way as positive controls. They fire at \(z > 5\times10^{8}\) --- eight orders of magnitude is the gap the table below sits in.
+
+Measured over 96 independent traces of 16384 samples per condition, which is what the table needs to mean anything: a \(z\) estimated from 24 traces wobbles by several tenths between runs, several tenths is the size of most of the entries below, and at that count the sign of about half of them is not stable.
+
+The first two columns differ in the \emph{ensemble}, not in the waveform. A detector could in principle key off one aperture realization rather than off the construction, so the battery is run both ways: redrawing the aperture for every trace, and holding one across all 96. The payload is redrawn either way. This says nothing about how often a key should be changed --- that is key management, it sits above this layer, and §RF-3.1 states the freshness precondition separately and for an unrelated reason. Two columns rather than one is a control on the measurement.
+
+\begin{table*}[tp]
+\centering\footnotesize
+\typesetfit{\textwidth}{%
+\begin{tabular}{llll}
+\toprule
+detector & keyed, aperture redrawn per trace & keyed, one aperture across all 96 & public zero state \\
+\midrule
+spectral flatness & −0.27 & −0.43 & −2.53 \\
+PSD peak/mean & −0.00 & +0.04 & +0.41 \\
+symbol-rate line & +0.01 & −0.06 & +0.55 \\
+\(x^2\) spectrum & +0.25 & +0.31 & +0.16 \\
+\(x^4\) spectrum & −0.07 & +0.14 & +0.06 \\
+autocorrelation peak & +0.11 & +0.14 & +2.96 \\
+amplitude kurtosis & −1.49 & −1.29 & −1.45 \\
+\(\lvert C_{40}\rvert\) cumulant & −0.08 & −0.18 & −0.19 \\
+\textbf{eigenvalue MME} & \textbf{+2.55} & \textbf{+2.69} & \textbf{+2.72} \\
+gzip ratio & +0.09 & −0.09 & +0.26 \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+Worst \(|z|\) is 2.55 redrawing the aperture, 2.69 holding one, 2.96 for the public zero state: all below 3, none of them a detection of structure. The first two agree to within the run-to-run wobble quoted above, which is what the control was for --- no detector found purchase on a single realization that it lacked against the construction, and nothing should be read into 2.55 against 2.69.
+
+\textbf{But one of these was not noise.} The table was measured on the earlier screen (\(K = 60\), \(L = 64\); the public column on the low-discrepancy aperture of §RF-4.3). Every other detector scatters about zero and changes sign between runs; the eigenvalue MME read \(+2.5\) to \(+2.7\) in \emph{every} run, in both ensembles and in the public mode. That was a real bias with a known cause: the rank deficiency of \(K < L\) (§RF-5.3), seen through a window of 16 far off the comb. Swept to a multiple of \(L\) the same statistic became decisive. The full screen has no rank deficiency, and on the codec's own path every second-order detector of §RF-5.3 --- covariance rank at the row width, the fold, lag correlation, the row-energy contrasts and the per-sample kurtosis --- reads noise at every cell measured.
+
+The public mode sat closer to the edge than a keyed one on both spectral flatness and autocorrelation, which is what the low-discrepancy aperture did, not being spectrally white (§RF-4.3). It was still under 3. The empty-seed public aperture is as white as a keyed one.
+
+\subsection{RF-5.3 The geometry leaks through a spare mode, and every mode is lit}\label{rf-53-the-geometry-leaks-through-a-spare-mode-and-every-mode-is-lit}
+
+Every row of the screen lives in the same \(K\)-dimensional keyed subspace of \(\mathbb{C}^L\). When \(K < L\) the covariance of \(L\)-sample windows at the row offset has \(L - K\) directions holding noise only, and an observer without the key finds them by eigen-decomposition. That leak, and two more that ride the same spare dimension, are why the screen lights every mode. What a spare mode leaks is set out first, and what the full screen measures after it (\texttt{research/\allowbreak{}rank\_\allowbreak{}leak.\allowbreak{}md}).
+
+\textbf{What a spare mode leaks.} The eigenvalue detector of §RF-5.2 used a window of 16. Swept, it is not benign. Take the covariance over windows of \(L\) samples: at the true width a screen with \(K < L\) occupies \(K\) of \(L\) dimensions exactly, so the covariance is rank \(K\) with \(L-K\) eigenvalues at the numerical floor --- near \(10^{-8}\) relative, the capture being \texttt{complex64} --- where noise has all \(L\) alive. Windows of \(L\) are where this starts rather than where it ends: the same deficiency recurs at every multiple of \(L\), and within each it spans a band of offsets exactly as wide as the spare dimension.
+
+Measured as \(\lambda_{\max}/\lambda_{\min}\) on a 384064-sample capture, so that \(T \gg W\) at every window and the covariance is estimable throughout:
+
+\begin{table*}[tp]
+\centering\footnotesize
+\typesetfit{\textwidth}{%
+\begin{tabular}{llllllllll}
+\toprule
+window & 8 & 16 & 32 & 48 & \textbf{64} & 96 & \textbf{128} & \textbf{192} & \textbf{256} \\
+\midrule
+\(K=60,\,L=64\) & 1.13 & 1.30 & 1.89 & 1.75 & \(\mathbf{8.1\times10^{7}}\) & 4.07 & \(\mathbf{2.1\times10^{8}}\) & \(\mathbf{1.1\times10^{9}}\) & \(\mathbf{5.3\times10^{8}}\) \\
+\(K=64,\,L=64\) & 1.04 & 1.10 & 1.22 & 1.35 & 1.49 & 1.85 & 2.23 & 3.47 & 5.59 \\
+Gaussian noise & 1.04 & 1.09 & 1.20 & 1.33 & 1.47 & 1.82 & 2.26 & 3.50 & 5.58 \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\textbf{The leak is a comb, not a single window.} Every \emph{multiple} of \(L\) is rank-deficient, because a structure that occupies \(K\) of every \(L\) dimensions also occupies \(2K\) of every \(2L\). An observer sweeping the window therefore sees a repeating tell rather than one cell, which makes \(L\) easier to identify rather than harder --- the spacing of the comb \emph{is} \(L\). Off the comb the signal is indistinguishable from noise to three significant figures.
+
+\textbf{The observer needs the row offset too, and its extent is exactly the spare dimension.} A capture does not begin on a row boundary. A window of \(L\) samples taken at offset \(o\) spans the tail of one row and the head of the next, and since each row lives in a \(K\)-dimensional subspace of \(\mathbb{C}^L\), that window lives in a space of dimension \(\min(L,\,K+o)\). So it is rank-deficient only while \(K + o < L\), and the deficiency is
+
+\typesetdisplay{\mathrm{def}(o) \;=\; \max(0,\; L - K - o),}{}
+
+symmetric about each boundary. Measured by reading the eigenvalue spectrum directly rather than thresholding it --- the capture is \texttt{complex64}, so the numerical floor sits near \(10^{-8}\) relative, which is also why the ratio is \(10^{8}\) and not the \(10^{15}\) a float64 measurement would suggest:
+
+\typesetcolumntable{%
+\begin{tabular}{lll}
+\toprule
+\(L-K\) & deficiency at \(o = 0, 1, 2, \ldots\) & leaking offsets, of \(L\) \\
+\midrule
+8 & 8, 7, 6, 5, 4, 3, 2, 1, 0 & 15 \\
+4 & 4, 3, 2, 1, 0 & 7 \\
+2 & 2, 1, 0 & 3 \\
+1 & 1, 0 & 1 \\
+\bottomrule
+\end{tabular}}
+
+exactly \(2(L-K) - 1\) offsets in every case. The leak is therefore a comb in the window \emph{and} a narrow band in the offset, and its whole extent is governed by one number: the spare dimension \(L - K\).
+
+\textbf{Scored against its own null, it is not bounded by SNR.} A ratio on a clean capture says how deep the deficiency is, not whether an observer can see it. Scored as a \(z\) against noise-only captures through the same pipeline --- the statistic \(-\min_o \lambda_{\min}/\overline{\lambda}\) over offsets \(o\), where \(z \ge 7\) is a detection and \(z < 4\) is noise --- the leak grows faster than \(\sqrt N\): at \(K = 60\), \(L = 64\) and −10 dB it reads \(z\) 0 / 6.7 / 41 / 121 over 83 ms / 417 ms / 1.67 s / 10 s, and the detection limit falls about 3 dB per 4× of capture, to about −16 dB at 10 s. In 10 s at \(L = 64\) the true width stands at \(z\) 19--27 at −15 dB and 109--124 at −10 dB, for every \(K\) from \(L - 8\) to \(L - 1\). One spare mode is as visible as eight: the statistic compares the quietest direction with the average, and one direction holding noise only is enough; the detection limit moves about 1 dB across that range. A sample-rate ratio other than 1 is no protection. An observer that resamples to the sender's rate reads \(z\) 27--42 at −10 dB from 1.67 s at ratios 0.514 and 0.833, against 30--41 at 1; the ratio comes key-free from the occupied band's edge to about \(10^{-4}\), and read in 512-row blocks the leak survives about \(3\times10^{-5}\) of ratio error, so an observer stepping \(10^{-5}\) needs about 20 hypotheses. The rate costs the observer compute, not detectability. Open and keyed read alike, rank being basis-invariant.
+
+\textbf{Two more features ride the same spare dimension.} The \emph{fold} is the fixed per-sample power profile \(\operatorname{diag}(B^{\mathsf H}B)\) that every row repeats, read as a harmonic sum of \(|x|^2\) at period \(L\). It goes as \(N(L-K)\): in 10 s at \(L = 64\) and 0 dB it reads \(z\) 585 at \(K = L - 4\) and 124 at \(K = L - 1\). The \emph{spectral ripple} is the projector's off-diagonal, seen as lag-correlation lines: 76 and 49 in the same captures. Both scale with \(L - K\), and both close only at \(K = L\).
+
+\textbf{The full screen closes all three.} At \(K = L\) the screen at the true geometry is a unitary image of unit-modulus coordinates: its covariance is \(\sigma^2 I\), its per-sample power profile flat and the projector's off-diagonal zero, by construction. The window table's second row shows it on a clean capture, tracking the Gaussian null to three significant figures at every window, on and off the comb. Measured on the codec's own path --- \texttt{compose}, DQPSK, the keyed row radius, through the same channel and observer and scored against the same noise-only nulls --- every second-order detector reads noise at every cell: \(L = 64\) and 128 at rate ratio 1 for 417 ms, 1.67 s and 10 s; \(L = 64\) at 0.514 and 0.833 for 417 ms and 1.67 s; open at 417 ms; SNR −15 to +10 dB. Rank \(|z| \le 4.4\), fold \(\le 2.4\), lag \(\le 5.6\), the row-energy contrasts \(\le 3.3\) and \(\le 6.1\), kurtosis \(\le 1.8\). The two cells above the nulls' leave-one-out range are single cells that do not grow with SNR or length; at the next SNR they read 1.0 and −0.7. The same path with four dark modes reads rank \(z\) 157 / 391 at 0 dB (417 ms / 1.67 s), fold 22 / 82 and lag 5.4 / 31.
+
+The rows' energy is a further route to \(L\), and the per-row radius closes it (RF-D4). At \(K = L\) a row's energy is exactly \(L r_t^2\), so without the radius it would return.
+
+A dark mode was also what a keyed receiver placed the geometry by, and the read that replaces it needs no empty direction: the constant-modulus read of §RF-3.2. The blind lock it holds is in §RF-6.
+
+\textbf{What remains is fourth-order.} The full screen is still a constant-modulus source through a fixed unitary mixture (§RF-5.4). Given the width and the row offset, the fourth-order cumulant matrix of whitened windows has \(L\) eigenvalues near \(-(s/(1+s))^2\) at SNR \(s\), where noise has none: the structure ACMA inverts. Measured with the width and the offset given: at \(L = 64\) from 417 ms it is noise at 0 dB (\(z\) 1.3) and detects at +10 dB (\(z\) 558); at \(L = 32\) it reaches 0 dB (\(z\) 154 at 417 ms, 508 at 1.67 s). Its evidence goes as \((s/(1+s))^4\) where the rank leak's goes as the square, and each (width, offset) hypothesis costs \(T L^4\) rather than \(T L^2\), plus an \(L^2 \times L^2\) eigenproblem --- about \(6\times10^{12}\) multiply-adds at \(L = 64\) and 10 s, against some 37 000 hypotheses for 585 widths by 64 offsets. It is not out of reach of a determined observer with long captures at positive SNR. A keyed aperture per absolute row removes it as well, at the cost of the blind late join; it is not adopted.
+
+\subsection{RF-5.4 What blind separation recovers}\label{rf-54-what-blind-separation-recovers}
+
+The composition of Definition RF-D4 is
+\typesetdisplay{X = A B, \qquad |A_{tk}| = 1 \ \ \forall t,k, \qquad B B^{\mathsf H} = I,}{\begin{gathered}X = A B,\\ |A_{tk}| = 1 \ \ \forall t,k,\\ B B^{\mathsf H} = I,\end{gathered}}
+a \textbf{constant-modulus source through a unitary mixture}. This is precisely the input to the Analytical Constant Modulus Algorithm {[}van der Veen \& Paulraj 1996{]} and to Iterative Least Squares with Projection {[}Talwar, Viberg \& Paulraj 1994{]}, neither of which needs a key.
+
+At \(K = L\) the row space is all of \(\mathbb{C}^L\), so given the width and the row offset the screen is already \(Y = AR\) with \(R\) unitary, because \(B\) is unitary; at \(K < L\) the covariance rank of §RF-5.3 hands over the \(K\)-dimensional row space, and projecting onto it gives the same form. ACMA then solves \(|y_t v| = \text{const}\), whose \(K\) orthonormal solutions are the columns of \(R^{\mathsf H}\). Measured at \(K = L = 16\), against a random-rotation floor of 0.450:
+
+\typesetcolumntable{%
+\begin{tabular}{ll}
+\toprule
+attack & coefficient recovery \\
+\midrule
+ACMA & \textbf{1.000} \\
+ILSP & \textbf{1.000} \\
+complex FastICA & 0.440 (at floor) \\
+\bottomrule
+\end{tabular}}
+
+FastICA fails because it maximizes kurtosis and finds none to maximize; the other two succeed because they exploit constant modulus and finite alphabet respectively. At \(K=60\), \(L=64\) (the earlier screen), ACMA recovers \textbf{all 60 mode streams, agreement 1.000, from 118 ms of clean capture}. That figure is not merely small: at 2 Msps it is about 3690 rows against \(K^2 = 3600\), which is the sample-size threshold §RF-5.5 derives. The attack turns on within a hair of it, and a shorter capture leaves it at the floor --- the same waveform, the same key, one-tenth the recording.
+
+In a differential carrying no keyed rotation, the payload follows from the coefficients. Measured against a control with the rotation of §RF-2.3 disabled: handed the exactly recovered coefficients and no key, an attacker differentially decodes at \textbf{BER 0.0000} --- the per-mode phase ambiguity ACMA leaves is cancelled \emph{for free} by the differential structure, which is the very property that lets the waveform carry no pilot. That ambiguity is the coordinate the keyed rotation occupies, and §RF-5.5 measures what occupying it is worth.
+
+A wrong key still gives BER \(\approx 0.5\) at every SNR, and blind discovery with a wrong key never finds the geometry. The key is sound. \textbf{The waveform's structure is what leaks}, and no key strength repairs it.
+
+The attacks collapse to chance at 12 dB, where ACMA's recovery falls to 0.282 against a control of 0.270. That resistance is a \emph{noise artifact}, not protection: against the same unrotated control, an interceptor with a better antenna --- or simply a longer recording --- reads the payload. Protection that expires when the adversary buys a better front end is not protection, which is why the defence sits where §RF-5.5 puts it instead.
+
+\subsection{RF-5.5 The keyed rotation}\label{rf-55-the-keyed-rotation}
+
+\textbf{The keyed per-mode rotation is what makes recovery useless.} A unit-modulus rotation drawn from the keystream per (row, mode), applied to the differential. Measured at \(K=L=16\) against a random-rotation floor of 0.451, beside a control identical but for the rotation:
+
+\typesetcolumntable{%
+\begin{tabular}{L{0.387\linewidth}L{0.293\linewidth}L{0.216\linewidth}}
+\toprule
+ & rotation disabled & as shipped \\
+\midrule
+attacker holding the \textbf{exact} coefficients & \textbf{BER 0.0000} & \textbf{BER 0.4962} \\
+\ldots best over every constant rotation available to them & --- & 0.4962 \\
+key holder & 0.0000 & \textbf{0.000000} \\
+constellation closure, no key & --- & \textbf{0.008} (a null: falls as \(1/\sqrt{TK}\)) \\
+constellation closure, with key & --- & \textbf{1.000} \\
+ACMA coefficient recovery & 1.000 & 1.000 \\
+ILSP & 1.000 & 0.564 \\
+FastICA & 0.440 & 0.450 (at the floor) \\
+\bottomrule
+\end{tabular}}
+
+ACMA still recovers the coefficients, and that is acceptable: the concentration was never what the key protects, and §RF-4.1 already grants that an observer may see \emph{something is there}. What it cannot do is read it. The closure figures say something sharper --- with no key there is no constellation to slice, so an eavesdropper cannot even measure \(M\).
+
+The rotation costs nothing measurable. Over twenty captures, counting those that locked, the link reads BER 0.00000 / 0.00159 / 0.10137 / 0.23804 at clean / 12 / 6 / 3 dB against an oracle's 0.00000 / 0.00144 / 0.09667 / 0.21744 --- within 1--3\%. That is deliberately the locked population: the question here is what the rotation costs a receiver, and a lock lost to noise is not a cost the rotation imposed. §RF-6 quotes the same reads, from the same run, over \emph{all} captures --- where the 3 dB figure rises to 0.264 because the two captures in twenty that lost their lock are counted rather than excused. Above 3 dB every capture locks, so the two columns coincide exactly and the populations differ only where the link is failing --- and the ten-detector battery still reads worst \(|z| = 2.7\).
+
+\textbf{The residual ILSP figure is a sample-size threshold, not a weakness in the design.} The table above is measured at \(K = L = 16\), and that residual is an artefact of the geometry rather than a property of the design. ACMA's design matrix is \(K^2\)-dimensional, so the attack needs a capture longer than \(K^2\) rows; at \(K = 16\) that is 256 rows against the 400 measured, and ILSP inherits the same threshold. Swept across geometries at 400 rows, against each configuration's own floor:
+
+\typesetcolumntable{%
+\begin{tabular}{lllll}
+\toprule
+\(K\), \(L\) & floor & ACMA & ILSP & attacker payload BER \\
+\midrule
+16, 16 & 0.466 & \textbf{1.000} & 0.577 & 0.4920 / 0.4907 \\
+15, 16 & 0.461 & \textbf{1.000} & 0.607 & 0.4937 / 0.4889 \\
+14, 16 & 0.484 & \textbf{1.000} & 0.755 & 0.4922 / 0.4909 \\
+12, 16 & 0.509 & \textbf{1.000} & 0.994 & 0.4906 / 0.4917 \\
+32, 32 & 0.365 & 0.369 & 0.373 & 0.4940 / 0.4946 \\
+31, 32 & 0.365 & 0.367 & 0.377 & 0.4934 / 0.4943 \\
+28, 32 & 0.377 & 0.391 & 0.401 & 0.4940 / 0.4930 \\
+60, 64 & 0.293 & 0.290 & 0.298 & 0.4952 / 0.4963 \\
+\bottomrule
+\end{tabular}}
+
+The mode ratio is not what governs it --- absolute \(K\) is. Holding the geometry and varying the capture instead puts the threshold exactly at \(T \approx K^2\):
+
+\begin{table*}[tp]
+\centering\footnotesize
+\typesetfit{\textwidth}{%
+\begin{tabular}{llll}
+\toprule
+\(K\) & \(T/K^2\) & ACMA recovery & attacker payload BER \\
+\midrule
+32 & 0.39 / 0.78 & 0.386 / 0.387 & 0.4922 / 0.4966 \\
+32 & 1.47 / 2.93 / 4.88 & \textbf{1.000} / \textbf{1.000} / \textbf{1.000} & 0.4986 / 0.4976 / 0.4986 \\
+60 & 0.11 / 0.42 / 0.83 & 0.286 / 0.271 / 0.292 & 0.4959 / 0.4979 / 0.4988 \\
+60 & 1.39 & \textbf{1.000} & 0.4991 \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\textbf{The conclusion is the reverse of a gap.} Given enough capture, ACMA recovers the coefficient matrix \emph{exactly}, at every geometry, and there is no way to stop it --- constant modulus is what the attack needs and constant modulus is what a differential phase alphabet is. What the sweep shows is that it does not matter: the attacker's payload BER is 0.4906 to 0.4991 in \textbf{every row of both tables}, including every row where recovery is 1.000. The keyed rotation, not the difficulty of the factorization, is the whole of the defence --- which is the right place for it to be, since a defence resting on an attacker having too few samples expires when they collect more.
+
+\textbf{Two other changes were measured and are \emph{not} adopted}, because each is a wire-format change costing 6--10 dB of margin for 2--2.5× the raw rate, and because the measurement above removes the reason to want them:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Non-constant modulus} takes ACMA from 1.000 to 0.519 by itself.
+\item
+  \emph{Phase order \(\ge 8\)} takes ILSP to the floor; \(M_{\text{phase}} = 4\) leaves a fourth-order cumulant even with continuous amplitude.
+\end{itemize}
+
+Neither is needed to close §RF-5.3's second-order leaks, which lighting every mode closes. With the rotation in place they are defence in depth rather than the defence, and they buy no payload secrecy that is not already held.
+
+\section{RF-6. Performance}\label{rf-6-performance}
+
+Measured on the earlier screen with the dark-mode read, at \(K=60\), \(L=64\), \(M=4\): 32064 samples carry 60000 bits, \textbf{1.871 bits/sample} against a theoretical 1.875, PAPR 10.0 dB (peak over the capture, 9.4--10.5 across keys, with the per-row radius), fill \(\varphi_F = 0.8835\), étendue 0.0985, Strehl 0.0295.
+
+The oracle column is a receiver handed the true width, row, mode count (on that screen), alphabet and both continuous coordinates. It is the ceiling this construction can reach, and the distance to it is what discovery costs.
+
+These reads are over \emph{all} twenty captures, lost locks included. §RF-5.5 quotes the same run over the locked ones, which is why its 3 dB figure is 0.238 against the 0.264 here; every row above 3 dB locks 20 out of 20, so the two agree exactly there. Lock rates are over twenty captures. Five is too few to state one: 5/5 is consistent with a true rate anywhere above about 0.5, and reads 5/5 at 3 dB where two independent twenty-capture runs give 18/20 and 17/20. In the second, the three failures read \((64,60,16)\), \((56,1,8)\) and \((68,5,4)\) --- one slipped only the alphabet, two lost the geometry outright. Twenty is enough to see the link is not reliable at 3 dB and not enough to put a third digit on how unreliable; both runs together put the lock rate near 0.87. The 3 dB BER rises with the failures, 0.238 to 0.264, because a lost lock is counted rather than excused. Every row above 3 dB is 20/20 in both runs.
+
+\begin{table*}[tp]
+\centering\footnotesize
+\typesetfit{\textwidth}{%
+\begin{tabular}{llllll}
+\toprule
+SNR & BER, discovered & BER, oracle & BER, wrong key & lock & time \\
+\midrule
+clean & 0.00000 & 0.00000 & 0.4997 & 20/20 & 3.2 s \\
+18 dB & 0.00000 & 0.00000 & 0.4996 & 20/20 & 3.4 s \\
+12 dB & 0.00159 & 0.00144 & 0.5000 & 20/20 & 2.8 s \\
+9 dB & 0.02266 & 0.02157 & 0.5005 & 20/20 & 5.1 s \\
+6 dB & 0.10137 & 0.09667 & 0.4995 & 20/20 & 7.6 s \\
+3 dB & 0.26421 & 0.21744 & 0.4999 & 18/20 & 12.7 s \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\textbf{Down to 6 dB the reads cost 2--8\% and are not what limits the link.} The discovered column runs 1.08, 1.04 and 1.02 times the oracle at 12, 9 and 6 dB. At 3 dB it is 1.20, and that gap is not the reads getting worse --- it is the two captures in twenty that lose the lock entirely, counted rather than excused. A receiver that locks at 3 dB reads what the oracle reads.
+
+What remains between the discovered column and Shannon is the modulation: differential PSK, hard decisions, no FEC. The margin comes from the adaptive widening and the full-capture settle of §RF-3.6 --- a receiver that settles the continuous coordinates on however few rows the integers needed instead gives 0.00583 at 12 dB and 0.27420 at 6 dB with 3 of 5 locks. That last comparison is a five-capture measurement and has not been repeated at twenty; the direction is not in doubt, the third digit is.
+
+Discovery cost scales with difficulty rather than being paid up front, which is the intended behaviour of a rule that widens only when the answer keeps moving --- about 3 s on a clean capture against 12.7 s at 3 dB. The streaming path pays the sweep once and then costs one projection per buffer.
+
+\textbf{The full screen.} At \(K = L\) a row carries \(L\) symbols where that screen carried \(L - 4\): +6.7\% bits per row at \(L = 64\) and +3.2\% at \(L = 128\). The same power over more symbols is 0.28 dB less per symbol at \(L = 64\), and the informed DQPSK read moves with it: 0.108 / 0.028 / \(2.3\times10^{-3}\) at 6 / 9 / 12 dB against 0.098 / 0.023 / \(1.5\times10^{-3}\) at \(K = L - 4\). Through a coded path (500-byte frames, soft bits, Viterbi decoding, CRC; DQPSK and 16-QAM at rate 1/2, 64-QAM at 3/4) the 1\%-PER thresholds measured about 0.3--0.5 dB higher, and above them goodput is 4--7\% higher: DQPSK 1/2 at 8 dB 0.906 → 0.962 bits/sample, 64-QAM 3/4 at 22 dB 3.66 → 3.84.
+
+The blind lock holds. With the width given, on 160-row DQPSK bursts and twelve captures a cell, the geometry locked 12 / 11 / 12 / 4 times at +6 / +3 / 0 / −3 dB against the dark-mode read's 12 / 11 / 9 / 4; at a sender-to-receiver rate ratio of 0.514 on 640 rows, 12 / 12 / 7 / 1 against 12 / 3 / 3 / 0. The fully blind width at ratios 0.514 and 0.833, \(L\) = 32 and 64, 20 and 10 dB, locked 4 of 4 in every cell, and the fully blind integer read (widths 2--102, 300 rows) 6 of 6 at 12, 6 and 3 dB. −3 dB is out of reach for both reads. What the read costs in time is in §RF-8.
+
+\section{RF-7. Design options}\label{rf-7-design-options}
+
+\begin{center}
+{\footnotesize
+\tablefirsthead{\toprule
+axis & options & what it buys, what it costs \\
+\midrule}
+\tablehead{\toprule
+axis & options & what it buys, what it costs \\
+\midrule}
+\tabletail{\midrule}
+\tablelasttail{\bottomrule}
+\begin{xtabular}{L{0.171\linewidth}L{0.207\linewidth}L{0.519\linewidth}}
+payload & differential \(M\)-PSK & no pilot, no phase reference, carrier-blind; \(\sim\)3 dB differential
+penalty, PSK only \\
+ & coherent square QAM & 3.93--7.86 bits/sample at \(M{=}16\)--256; needs the reference row,
+sensitive to residual crosstalk \\
+ & analog embedding & graceful drift instead of a cliff; carries a direction, not bits; rides
+no screen, so a screen reader sees noise (§RF-2.5) \\
+ & → \emph{the first two are told apart by measurement} & the receiver is not told which rides: the differential and coherent
+closures name it, 1.0000 vs 0.0090 on one and 0.0201 vs 0.3598 on the
+other. The third is not in that comparison --- it carries no screen to
+close on \\
+key & seed (\texttt{bytes}/\texttt{str}/\texttt{int}, untruncated) & private \\
+ & \texttt{seed=\allowbreak{}None} & public broadcast, same code path, no branch \\
+modes & every mode lit, \(K = L\) (\(L - 3\) under a beacon); a message's final
+row uses fewer & closes the rank, fold and ripple leaks (§RF-5.3); +6.7\% bits per row at
+\(L = 64\) for 0.28 dB per symbol; nothing to count, so no mode-count
+read (§RF-3.3) \\
+ & → \emph{not a dial} & a spare mode is visible from −15 dB in 10 s however few there are
+(§RF-5.3), so the writer refuses any \(K\) but \(L\) \\
+security & as shipped (keyed rotation) & energy visible, not classified as a signal by the blind battery;
+ACMA/ILSP recover the coefficients given \(T > K^2\) but read the
+payload at BER 0.49 \\
+ & shaped + per-mode keys & attacks at the floor; costs 6--10 dB, gains 2--2.5× rate; wire-format
+change \\
+geometry & full screen, as shipped & every second-order key-free read is noise on the codec's own path; the
+fourth-order structure remains given the width and the offset (§RF-5.3) \\
+ & null-space fill & measured on the earlier screen and declined: see below \\
+row energy & keyed per-row radius, Gamma(\(L\)) & rows' energies distributed as white noise's; 0.1--0.2 dB coded, PAPR to
+the Gaussian's; wire format (RF-D4) \\
+sender & unmarked / marked & an address, not a secret; free in power and rate \\
+\end{xtabular}
+}
+\end{center}
+
+\textbf{The payload format is measured, not shared.} Two of the three payloads ride the screen, so a \texttt{decode} that took the differential path unconditionally would make the choice between them something the two ends agree out of band --- the pre-declared parameter this construction refuses, arriving as a menu rather than as an argument. Measured, it is also simply wrong: a coherent capture read that way comes back at BER 0.4965, a confident wrong answer from a receiver holding every parameter it needed. The same closure read that identifies the M-PSK alphabet, asked of the coherent lattice instead, separates them without a threshold: 1.0000 against 0.0090 on a differential capture, 0.0201 against 0.3598 on a coherent one, and under a wrong key neither closes on anything (at most 0.062). The larger names the payload, the way the carrier is settled by whichever value reads lower on the constant-modulus read.
+
+The coherent branch reads the payload itself. It locates the keyed reference row, reads the row-rate carrier off the payload with \(T\) rows of lever (the carrier the dark-mode geometry read settled was \(10^{-4}\) cycles/row off at 40 dB, 0.38 rad over 600 rows), and reads \(M\) as the square lattice the de-keyed symbols close on --- the argmax of a signed lattice closure, with no level. Measured BER, and the point where the order read gives way, are in \texttt{research/\allowbreak{}coherent\_\allowbreak{}blind.\allowbreak{}md}. An open broadcast of coherent 16-QAM or denser is still read as differential: with no keyed rotation the differential closure of a QAM capture reaches 0.50, above the coherent 0.36.
+
+\textbf{Null-space fill was measured on the earlier screen and not adopted, and the full screen leaves no null space to fill.} At \(K = 60\) the leak was that \(L-K\) directions were empty in every row. Keyed energy placed there on one row in \(L\) is orthogonal to the payload, so it left the payload exactly intact for 0.07 dB of average power, and on a clean capture it took the on-comb peak over its off-comb reference from \(1.3\times10^{9}\) to 41.9, with the blind lock still reading \((64, 60, 4)\) at BER 0.000000. Against an observer's realistic capture it bought little --- 85.8 → 25.5 at 18 dB, 21.0 → 12.9 at 12 dB, 6.6 → 5.1 at 6 dB, against a Gaussian reference of 2.6 --- for \textbf{2.5 dB of PAPR}, 10.5 → 13.0. Filling 4 rows in 64 occupied the dark mode often enough that the mode count misread (62 against 60) and the blind decode was lost at BER 0.5012.
+
+Scored as a \(z\) against its own null, no filler level served both sides: filler deep enough to mask the spare directions for an observer integrating for seconds also masked them for a dark-mode read locking on a burst (\texttt{research/\allowbreak{}rank\_\allowbreak{}leak.\allowbreak{}md}, cure (a)). The emptiness the observer saw was the emptiness that read needed. The constant-modulus read of §RF-3.2 needs none, which is what lets the screen be full.
+
+\section{RF-8. Limits and open problems}\label{rf-8-limits-and-open-problems}
+
+\textbf{The coefficients are recoverable, by design and unavoidably.} Once a capture exceeds \(K^2\) rows, ACMA factors the constant-modulus product exactly, at every geometry measured (§RF-5.5). This is not a defect to be closed: constant modulus is what a differential phase alphabet \emph{is}. The attacker's payload BER is 0.4906--0.4991 across every geometry and capture length tried, including where recovery is 1.000, so what protects the message is the keyed rotation alone. The thin ILSP margin visible at \(K = L = 16\) is an artefact of that geometry, where \(K^2 = 256\) sits below the 400-row capture used; swept across geometries it is not there.
+
+\textbf{The geometry does not show to second order; it does to fourth.} Every second-order key-free read of the full screen is noise on the codec's own path. Given the width and the row offset, the fourth-order structure ACMA inverts remains, detectable at \(L = 64\) from +10 dB in 417 ms and at \(L = 32\) from 0 dB. §RF-5.3.
+
+\textbf{Freshness is assumed, not provided.} One seed keys one waveform, and a fresh key per transmission is a precondition this layer relies on and does not enforce. It is stated as a limit because the enforcement lives elsewhere: reuse is a two-time pad yielding the \emph{payload} difference at 100\% of symbols rather than merely the geometry, since the rotation that defends the payload repeats with the seed (§RF-3.1). Nothing here detects it, and nothing here could.
+
+\textbf{No grid anywhere.} The coarse carrier level is a golden-ratio probe sequence extended until the geometry stops changing (§RF-3.5). Everything else is a read or an enumeration of a discrete coordinate against an exact one.
+
+\textbf{The carrier probe extends its own candidate range and stops on a repeat.} §RF-3.7 sets out why that is the unsound kind of widening: a wider range contains candidates the narrower one did not, so a repeat can mean the true answer is still outside everything looked at. On the row axis the range is fixed and the \emph{probe} against it widens, which is the sound kind; on the carrier axis the probe set is itself the range. Comparing the candidates the widening proposes (§RF-3.6) covers the case where the true carrier was proposed and then discarded, and every carrier inside a span of 1 to 8 is now found (§RF-3.5) --- but it cannot recover one that is never proposed at all. Measured, a span of 32 misses \(\nu = 0.64\) and \(1.5\) while finding 0, 0.19 and 6.0. So \texttt{carrier\_\allowbreak{}span} is a bound to be set at the oscillator's spec rather than generously, and it declines rather than lying when it is wrong. Enumerating the probes the way the candidate widths are enumerated would remove the bound; it costs three to eight times the sweep, and that trade is the open piece.
+
+\textbf{Discovery enumerates two coordinates.} Width and row offset are found by descending a read over candidates. A direct read returning them in one shot is open. The cost is structural rather than a missed optimization: with an unknown carrier the width cannot be shortlisted first, so the sweep is 255 candidate widths against 8 carrier probes. Acquisition is around 0.15--0.4 s on a bounded capture and a few seconds fully blind on a long one, and it is paid once --- a streaming receiver primes on 100 rows in about a second and every buffer after that is one projection. Those timings are the dark-mode read's. The constant-modulus scan forms 16 coordinates per hypothesis where the dark read formed one: fully blind on 300 rows over widths 2--102 it costs 3.7 / 4.3 / 8.2 s at 12 / 6 / 3 dB against 2.1 / 3.3 / 7.5 s, with the width given 0.5--3.3 s against 0.5--2.3 s, and the blind width at a non-unit rate ratio 19--81 s against 9--41 s, 1.4--3.3 times the dark read's, the 16 mode filters per phase being the cost.
+
+\textbf{The alphabet is genuinely ambiguous} when the used points lie on a smaller constellation, and a constant source carries no evidence of an alphabet at all. §RF-3.4.
+
+\textbf{Multipath} degrades gracefully and with no equalizer. Measured with a single echo delayed 7 samples: on the earlier screen, discovery locks correctly (\(L=64\), \(K=60\)) at \textbf{every} level tried, down to a −3 dB echo, and the payload reads BER 0.2171 / 0.0964 / 0.0095 / 0.0003 at −3 / −6 / −10 / −13 dB, against an oracle's 0.2132 / 0.0950 / 0.0094 / 0.0003 --- so the echo costs the reads nothing, it costs the channel.
+
+\textbf{CW interference does not move the geometry.} With a mid-band tone, measured at \(K = L\), the width and the row lock at every level from −13 to 0 dBc, and blind decode reads BER 0.003 / 0.023 / 0.10 / 0.20 / 0.30 at −13 / −10 / −6 / −3 / 0 dBc. There is no mode count for the tone to corrupt. On the earlier screen there was: a tone is a concentrated mode, the rank edge counted it as occupied, \(K\) misread from −3 dBc upward, and the decode was lost at BER 0.50. The interference read rises monotonically across the same levels and flags it --- Strehl 0.067 / 0.109 / 0.217 / 0.349 / 0.512 --- so a receiver can see that the band holds interference even where it cannot decode through it.
+
+\textbf{The analog embedding reads as noise to a screen reader, which is the correct answer.} There is nothing here to decline: the construction has no boolean for whether a signal is present, because that boolean would need a level someone chose. \texttt{discover} reports evidence and the caller reads it, and the evidence here is not close. Measured on the same key with the dark-mode read: a real screen scores \(6.0\times10^{-16}\) in the dark mode with margin \(3.1\times10^{14}\) and closure 1.0000; the embedding scores 0.675 with margin 1.15 and closure 0.0303; pure noise scores 0.719 with margin 1.00 and closure 0.0066. The embedding is with the noise, fourteen orders from the screen, which is the right answer -- to an aperture read it \emph{is} noise, because it rides no aperture. \(D\) is measured rather than shared, the spread operator's nesting having made that affordable (§RF-2.5), and it is measurable only on a capture carrying the embedding alone; under noise the read returns \(N\), which recovers the direction and not the dimension. The mechanical guard audits readers as a set rather than only \texttt{decode}'s signature, because one signature cannot see a parameter that arrives as a choice between readers (§RF-7).
+
+\textbf{No FEC, and the hard decision costs most in the middle, not at the bottom.} The receiver computes a soft value per symbol and then rounds it; :func:\texttt{read\_\allowbreak{}soft} returns that value unrounded, at no wire cost and with no new parameter. Ranking symbols by angular distance to a decision boundary and erasing the least confident fifth --- model-free, nothing fitted --- takes the symbol error rate from 0.0020 to 0.0000 at 12 dB, 0.0292 to 0.0028 at 9 dB, 0.1316 to 0.0767 at 6 dB and 0.2979 to 0.2571 at 3 dB. So the recoverable margin is a factor of ten around 9--12 dB and only 1.2 at 3 dB: down there the errors are not marginal calls but a genuinely smeared constellation, the least-confident quintile erring at 0.474 against 0.188 for the most confident, where at 6 dB that spread is 13. An outer code has the most to gain in the middle of the range, which is the opposite of the usual expectation. Log-likelihood ratios are deliberately not provided: an LLR needs a noise model, and this package does not fit one.
+
+\textbf{A late join at low SNR needs rows.} The alignment reach is bounded by the margin, not the search (§RF-3.7): at 3 dB a receiver joining mid-stream needs roughly 600 rows after the join, and at 1 dB the alignment does not settle at all. A receiver that has joined late and cannot yet align is not wrong about it --- the reach simply does not settle, and it keeps the shallowest answer the evidence supports.
+
+\textbf{How much of a stream to prime with is measured, not chosen.} An \texttt{acquire} that used whatever it was handed would make a caller passing a slice to go faster choose a sample count. Nothing on the wire turns on it --- a receiver that hands over its whole buffer shares no parameter with anyone --- but the cost of discovery is the width sweep, charged per row, so guessing high is paid for in full and guessing low fails to lock, and a number that has to be guessed is a number somebody chose. \texttt{StreamReceiver.\allowbreak{}acquire} takes the buffer and reads the prefix it needs.
+
+Which prefix that is, is not the obvious one, and the simpler stopping rules fail in ways that locate the requirement. Widening until the read locks returns a convinced \(L=8\) from the first 64 samples. Requiring two successive prefixes to agree does not help, because two short prefixes agree with each other: 128 and 256 samples both return \(L=11\), offset 7. Rejecting answers that sit at the top of the candidate range fixes a capture cut 17 samples into a row and not one cut at 63.
+
+Two properties of the reads are underneath that, and neither is in the answers themselves. The first is the candidate range: \texttt{discover} draws its widths from \(\mathrm{isqrt}(\mathrm{len}(iq))\), so a short prefix silently truncates the search and the read returns whatever sits at the top of what is left. Derive the range once from the \emph{whole} buffer and widen only the prefix under it, and the width and the row offset converge at 256 samples --- four rows --- on cuts of 1, 17 and 63, confirmed at 512.
+
+The second is the depth the alignment needs. \textbf{It needs sixty-four rows where the geometry needs four}, and that number is flat: the same at join depths of 0, 17, 250 and 1500, and the same at clean, 12 dB and 6 dB. Below it the alignment reports row 0 --- which is also what a capture that genuinely began on row 0 reports. A rule that stops when the answer repeats therefore stops on the run of defaults, takes row 0 for a stream that joined at 1500, and decodes correct geometry at BER 0.50.
+
+What separates those two cases is not a row count but a distinction the alignment already holds and does not otherwise report: whether anything settled. \texttt{Discovery} carries it, and the widening continues until the read both settles its alignment and says the same thing twice --- correct at every join depth and every mid-row cut tried. Unbounded that costs 17.9 s, of which 9.5 s goes to prefixes too short to align at all, each paying a full 255-width sweep to re-derive a width it already has. Narrowing the candidates once the width has repeated --- §RF-3.6's rule that only the sweep widens, applied one layer out --- brings it to \textbf{1.8--3.2 s}, which is what a caller who guesses a good slice pays. Narrowing on the \emph{first} lock instead pins whatever a 64-sample prefix invented, measured \(L=25\): the geometry needs its own agreement rule, one doubling ahead of the alignment's.
+
+\textbf{A capture with a NaN in it is rejected, not repaired.} One non-finite sample poisons every read that touches it --- the geometry read comes back NaN and nothing locks --- so without this check the failure is indistinguishable from a dead band. The read reports the count and the first bad index. Repair is not offered: dropping the sample shifts every sample after it and destroys the timing the whole construction rests on, and zeroing it would be this package deciding what a caller's missing data meant. A front end that drops samples has a problem worth knowing about.
+
+\textbf{Hardware results are thin.} On a cabled Pluto+ → NESDR bench the full-screen (K = L) waveform locks blind and decodes at all eight TX/RX rate pairs tried (0.33--1.0 occupancy, \textasciitilde19--20 dB SNR; see the README's hardware entry). It has not crossed a two-radio link at distance. Everything else here is simulated AWGN through a loopback channel model with optional carrier offset, fractional delay and IQ image.
+
+They are \emph{driven}, against stub devices that record what the driver does to the vendor API --- including that both receive paths discard one buffer before keeping one, which on a bench is the difference between reading this capture and the previous one, and that both subtract the mean, LO leakage putting a DC term on everything a real front end hands over. That cannot show the waveform survives a real front end, but it reaches the code where a never-executed path breaks, and three properties of the drivers rest on it. The transmit buffer is released before re-transmitting, which pyadi-iio requires before it will change cyclic mode; without that a second transmit in one session either raises or silently keeps sending the first payload. The transmit scale is filled from the buffer's own measured peak to \(2^{14}\), the range ADI's examples document for the AD936x, the DAC being 12-bit; a fixed \(2^{12}\) against the waveform's 10.5 dB PAPR leaves 6 dB of the converter unused, which is 6 dB of receive SNR given away before the signal reaches the air. And the RTL-SDR reports the centre frequency it \emph{achieved} rather than the one it was asked for, as it does the sample rate, so the clock offset that receiver exists to demonstrate is visible.
+
+\textbf{The two-way screen is unused.} The companion's Appendix A makes a crossing \(\tau = \min(1, G_h/G_g)\); with the same aperture at both ends \(\tau = 1\) and the pertinent energy is all of it, so every crossing read is identically trivial. \texttt{Screen} would become meaningful for mismatched geometries, for interference from a foreign aperture, or for the multi-party shared-channel case where several sides genuinely meet on one basis and the étendue bound binds. Its per-side reads additionally require \texttt{resolved\_\allowbreak{}modes\ \textgreater{}\allowbreak{}\ 0}, which is 0 on this waveform.
+
+\section{RF-9. Reproducibility}\label{rf-9-reproducibility}
+
+The construction is a small Python package depending on \texttt{numpy}, the companion \texttt{entroptics}, and \texttt{scipy} for one bounded-refinement call. Its command line runs the whole waveform on a simulated link (\texttt{selftest}, \texttt{ber}, \texttt{focus}, \texttt{embed}) or on a radio (\texttt{tx}, \texttt{rx}), and takes the key as text rather than only as an integer --- \texttt{int}, \texttt{str} and \texttt{bytes} are three different keys, and the interface admits all three. 412 tests pin the identities of this paper, including two that enforce its rules mechanically and eleven that run the attacks of §RF-5 against the shipped waveform on every run: \texttt{test\_\allowbreak{}no\_\allowbreak{}fft} scans the shipped source for any spectral or filtering call and fails on any of them whatever its provenance, and \texttt{test\_\allowbreak{}no\_\allowbreak{}preshared\_\allowbreak{}parameters} inspects what reception actually requires so that a parameter cannot be added quietly.
+
+\textbf{The tests were checked against deliberate defects, not only against the code as written.} A count of tests says nothing about whether they constrain anything, so eighteen mutations were applied to the shipped source --- a flipped conjugation, a flipped carrier sign, an aperture taken from the wrong end, a reference row reverted to all-ones, the keyed rotation neutralized, the spread operator un-nested, the sender rotation dropped, the alignment reach frozen, the probe frozen, the agreement rule bypassed, the widening's candidates left uncompared, the finiteness guard removed, and others --- each run against the whole suite.
+
+Seventeen were caught. The one that survived: flipping the sign of the carrier de-rotation in \texttt{read} passed every test, because every test that applied a carrier used \(3\times10^{-4}\) cycles/sample --- \(\nu = 0.0192\) at \(L=64\) --- where the differential absorbs the error and both signs decode. At \(\nu \ge 0.064\) they do not: BER 0.0000 against 0.4016, 0.5949 and 0.4993 at \(\nu = 0.064\), 0.192 and 0.64. A fixture at one small offset leaves an entire coordinate of §RF-3.5 unconstrained. A test asserting both halves --- that the measured sign decodes exactly and the opposite destroys the payload --- closes it, and the mutation is caught.
+
+\textbf{The audit is itself perishable, and is guarded.} Each mutation is located by an exact source string, so a rename or a rewrap stops it matching --- and a mutation that does not apply mutates nothing, the suite passes, and the run reports \texttt{caught} for a test that was never challenged, certifying coverage it did not measure. A report like that is worse than none. So a test checks on every run that each target still occurs exactly once in the shipped source, that no replacement equals its target, and that no \texttt{MUTANT} marker survives from an interrupted run --- measured, defanging one entry fails exactly that test and names the mutation it disarmed.
+
+Coverage reaches the operator interface the same way, \texttt{rx}'s success and failure paths both being exercised. A no-signal branch that tests \texttt{Discovery.\allowbreak{}locked} --- which only says the sweep returned a width and is therefore almost always true --- takes pure noise as a lock: handed noise, with the dark-mode read, it prints \texttt{lock:\allowbreak{}\ L=\allowbreak{}138\ offset=\allowbreak{}119\ K=\allowbreak{}136\ M=\allowbreak{}8}, reads 8008 bits and exits 0, and never prints the closure, the one read that separates a transmission from noise, a DC level or a tone (§RF-3.2). \texttt{rx} judges on the closure, prints it beside the score and the margin, and says what the bits are worth. The operating point is declared at module scope with the measurements behind it, which is the reader's risk level of §RF-9.1 and not a constant in any read.
+
+Line coverage was measured for the same reason and found what mutation could not: \texttt{embedded\_\allowbreak{}dimension}, the read that removes the last shared parameter from the analog mode, was called by no test --- forty-six lines, its behaviour written up in §RF-2.5, constrained by nothing --- and the entry-point audit listed \texttt{read\_\allowbreak{}embedding} as needing \(D\), which that read does not. Both are fixed, and the package runs at 96\% line coverage --- 99\% of the command line, 96\% of the waveform, 93\% of the radio drivers against stub devices. What is left uncovered is the handful of lines that only a real radio can reach.
+
+Every number in this paper is reproduced by scripts in the repository: \texttt{scripts/\allowbreak{}evidence\_\allowbreak{}adversary.\allowbreak{}py} (the ten-detector battery with positive controls), \texttt{scripts/\allowbreak{}evidence\_\allowbreak{}receiver.\allowbreak{}py} (the keyed and public reads against wrong keys), and \texttt{scripts/\allowbreak{}attack\_\allowbreak{}suite.\allowbreak{}py} (ACMA, complex FastICA, ILSP, scored against a random-rotation floor). \texttt{scripts/\allowbreak{}check\_\allowbreak{}paper.\allowbreak{}py} checks this document against itself --- LaTeX mangled by a shell heredoc, unbalanced math delimiters, a §RF cross-reference to a section that does not exist, a test count that has drifted from what pytest collects --- none of which the suite can see, because the paper is prose.
+
+Of those, only \texttt{evidence\_\allowbreak{}adversary.\allowbreak{}py} breaks the rules of §RF-1: the detector battery needs spectra, matched filters and pulse shaping, because that is what a conventional receiver is made of and the battery exists to be one. \texttt{attack\_\allowbreak{}suite.\allowbreak{}py} breaks no rule at all --- ACMA, FastICA and ILSP are linear algebra, which is the uncomfortable part of §RF-5.4: the attacks that reach this waveform do not need a transform either. All of them sit outside the package regardless, so the source scan never sees them, and none is a dependency of the transmitter.
+
+\subsection{RF-9.1 Provenance of every constant}\label{rf-91-provenance-of-every-constant}
+
+\begin{table*}[tp]
+\centering\footnotesize
+\begin{tabular}{L{0.117\textwidth}L{0.150\textwidth}L{0.117\textwidth}L{0.550\textwidth}}
+\toprule
+quantity & role & kind & provenance \\
+\midrule
+SHAKE-256 & keystream & standard & FIPS-202 XOF; chosen over PCG64, whose state is recoverable from a few
+outputs \\
+empty seed field & public aperture & derived & the keyed SHAKE-256 construction with the seed field empty; no real seed
+encodes to it, anyone can compute it from the spec, and it is as white
+as a keyed aperture (§RF-4.3) \\
+canonical QR & aperture orthonormalization & derived & two ends must land on the same basis exactly \\
+flat Dirichlet mean entropy deficit, and its sd & constant-modulus null and spread & \textbf{library read} & the companion's
+\texttt{entropy.\allowbreak{}dirichlet\_\allowbreak{}entropy\_\allowbreak{}moments},
+exact: what a row of complex Gaussian coordinates reads on average, and
+how far one row scatters (0.97 at 2 modes, 0.32 at 16, 0.16 at 64). The
+first puts the read at 1 off the geometry at every width; the second
+ranks widths by significance (§RF-3.2) \\
+\(1 + 3\,\text{spread}(m)\) & cap on one row's read & implementation & a row far above the null is no more evidence against a geometry than a
+Gaussian row; three of the null's sds moves 0.1\% of its rows (§RF-3.2) \\
+\(\alpha\) (\texttt{far}) & decision level & \textbf{declared} & the reader's operating point, external by Neyman--Pearson, exactly as in
+the companion §11.1 \\
+\(\alpha/n\) & multiplicity correction & derived & field-wide rate over \(n\) candidates, as the companion's \texttt{sweep}
+derives from \texttt{far/\allowbreak{}n\_\allowbreak{}patches} \\
+candidate widths, \texttt{carrier\_\allowbreak{}span} & search bounds & \textbf{declared} & where to look; \texttt{carrier\_\allowbreak{}span} is the oscillator's
+ppm spec, a hardware fact. It is a bound and behaves as one out to a
+span of 8: every carrier inside is found and every carrier outside is
+declined (§RF-3.5). It is not freely wideable --- the probe set is its
+own candidate range and the loop stops when the geometry repeats, so
+past about 16 a true carrier can go unproposed, measured at a span of 32
+missing \(\nu = 0.64\) and \(1.5\) (§RF-8) --- which is why it is the
+oscillator's spec rather than a generous number. Nothing is thresholded
+against either bound, and both fail loudly rather than quietly: a miss
+scores (with the dark-mode read) \(\approx 0.9\) with margin
+\(\approx 1\) and closure \(\approx 0.1\) against \(1.4\times10^{-15}\),
+\(7.1\times10^{13}\) and 1.0000 for a lock, and at \(\nu = 3\) and \(8\)
+past the span the read scores \(2.3\times\) and \(1.5\times\) the null
+against hundreds, so a reader declines rather than taking a confident
+wrong geometry \\
+doubling from \texttt{MIN\_\allowbreak{}ROWS} & widening schedule & derived & ceiling is the capture; stops on exact integer agreement. The
+\emph{start} is not derived and does not need to be: starting at 2, 4 or
+8 returned the same geometry and BER with the dark-mode read, so 8 only
+skips doublings nothing needed. The one forced value is 2, the fewest
+rows a differential exists on \\
+\texttt{CM\_\allowbreak{}MODES} = 16 & modes a scan reads per hypothesis & \textbf{declared} & a search bound: the integer scan, the scaled scan and the period map
+read the first 16 modes of each hypothesis, and settles and comparisons
+read all \(L\). At 16 the scan's evidence at 3 dB matches the dark-mode
+read's
+(\texttt{research/\allowbreak{}rank\_\allowbreak{}leak.\allowbreak{}md},
+cure (e)). Nothing is thresholded against it \\
+\(1/\varphi\) & carrier probe order & derived & the worst-approximable number, so the additive recurrence on it is the
+canonical 1-D low-discrepancy sequence; extensible, which an evenly
+spaced grid is not (§RF-3.5) \\
+\texttt{JOIN\_\allowbreak{}SEARCH\_\allowbreak{}ROWS} & how late an unbeaconed keyed join is recoverable & \textbf{declared} & the default reach of the join hunt, which the deployment overrides
+through \texttt{join\_\allowbreak{}rows} on \texttt{discover},
+\texttt{decode}, \texttt{decode\_\allowbreak{}scaled} and
+\texttt{acquire}. Nothing in a capture derives it, since a receiver
+cannot know how long it was not listening. It binds \emph{one} of the
+three configurations, which is what makes it tolerable: measured on a
+join at row 4996, 900 rows past the default, an open broadcast decodes
+at BER 0.0000 --- it carries no rotation, so the hunt is one candidate
+deep --- and a beaconed stream reads row 4996 exactly at BER 0.0000, the
+row being read rather than hunted (§RF-2.3), while a keyed unbeaconed
+stream reports row 282 at BER 0.4994 with closure 0.0115 against 1.0000,
+so the reader declines it rather than believing it. Within its reach the
+number decides which joins work rather than what they cost: at 1024 a
+join at row 2000 fails outright (row 419, BER 0.5008) where 4096
+recovers it. A count, so a given reach recovers reach \(-1\): at the
+default, measured exact at 4095 and BER 0.4995 at 4096. The cost is
+linear past about 4096, near 0.22 ms per candidate row --- 1.81 s at the
+default, 4.56 s at 16384 and 15.35 s at 65536, correct at each. A
+ceiling, not a working depth, since the reach widens only as far as the
+capture evidences (§RF-3.7) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+\begin{table*}[tp]
+\centering\footnotesize
+\begin{tabular}{L{0.117\textwidth}L{0.150\textwidth}L{0.117\textwidth}L{0.550\textwidth}}
+\toprule
+quantity & role & kind & provenance \\
+\midrule
+carrier probe rounds: \(+4\) each, floor 8, cap 64 & probe schedule & implementation & bounds on the loop, not a choice of count --- the count is measured, the
+probing stopping when the geometry repeats (§RF-3.5). Measured across
+spans of 1 to 16 and \(\nu\) from 0 to 3 the loop settles on 8 to 20
+probes, so the cap never binds and is a runaway guard; and the geometry
+is already correct on the first 4 probes at every span and carrier
+tried, so the floor skips rounds nothing needed, exactly as
+\texttt{MIN\_\allowbreak{}ROWS} does \\
+doubling from 32 rows & probe and reach schedule & derived & the same widening rule as \texttt{MIN\_\allowbreak{}ROWS}, applied to
+the alignment; stops on exact integer agreement \\
+\texttt{isqrt(\allowbreak{}len(\allowbreak{}iq)\allowbreak{})\allowbreak{}},
+capped at 256 & candidate width cap & derived & a width \(L\) needs \(L^2\) samples before the capture can evidence it
+at all \\
+\texttt{resolution\_\allowbreak{}floor} \(\times N\) & residual floor for \(D\) & \textbf{library read} & the companion's
+\texttt{entropy.\allowbreak{}resolution\_\allowbreak{}floor} --- the
+scale below which a quantity cannot be told from the round-off that
+produced it, taken from the working dtype's epsilon rather than
+asserted. Scaled by \(N\) because the residual is a sum of \(N\)
+per-sample contributions (§RF-2.5) \\
+refinement bracket \((0.5,\,0.25)\), Powell \texttt{xtol}/\texttt{ftol} & extent and convergence of the bounded refinement & implementation & the phase half-width is forced: the integer offset is enumerated, so the
+fraction it leaves lives within half a sample either way. Neither number
+reaches an answer --- measured across brackets of \((0.5, 0.125)\),
+\((0.5, 0.5)\), \((0.5, 1.0)\) and \((0.25, 0.25)\) and tolerances from
+\(10^{-4}\) to \(10^{-8}\), the geometry, the carrier to four decimals
+and the BER are identical in every case, the refinement being a polish
+on a read that the coarse stage already has right (§RF-3.5) \\
+\texttt{\_\allowbreak{}KEY\_\allowbreak{}BLOCK} = 64 & keystream block & implementation & rows per seekable block; changes the cost of a seek and nothing that is
+read \\
+\texttt{BAND\_\allowbreak{}POSITIONS} = 1024 & grid the band read's kernels are built on & implementation & a precision bound: a position within 1/2048 of a sample is a mean phase
+error over the band of \((\pi/2048)^2/3\), −61 dB, under anything the
+read resolves; the band read's margin is
+\texttt{JOINT\_\allowbreak{}REACH} rows, the joint read's
+(\texttt{research/\allowbreak{}rank\_\allowbreak{}leak.\allowbreak{}md},
+``Blind decode on the current waveform'') \\
+\(2^{14}\) & AD936x transmit scale & hardware & the range ADI's examples document for the part, the DAC being 12-bit;
+radio layer, outside every read \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Both search bounds were tested past their edges, because a bound that mislocks silently is worse than one that is too small: neither does. Exceeding the carrier span or the join reach drops the closure to within a factor of two of the null, where a reader declines it (§RF-3.2), rather than returning a confident wrong geometry.
+
+No number in the decision path is fitted. The \emph{declared} inputs are the reader's risk level and four search bounds --- where to look, how far, and how many modes a scan reads --- and a search bound says where to look rather than what to conclude. The remaining entries are either forced by a definition, set by the machine's precision, or below the reads entirely.
+
+\section{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  A. J. van der Veen and A. Paulraj, \emph{An analytical constant modulus algorithm}, IEEE Trans. Signal Process. \textbf{44} (1996) 1136--1155.
+\item
+  S. Talwar, M. Viberg and A. Paulraj, \emph{Blind estimation of multiple co-channel digital signals using an antenna array}, IEEE Signal Process. Lett. \textbf{1} (1994) 29--31.
+\item
+  A. Hyvärinen and E. Oja, \emph{Independent component analysis: algorithms and applications}, Neural Networks \textbf{13} (2000) 411--430.
+\item
+  Y. Zeng and Y.-C. Liang, \emph{Eigenvalue-based spectrum sensing algorithms for cognitive radio}, IEEE Trans. Commun. \textbf{57} (2009) 1784--1793.
+\item
+  NIST, \emph{SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions}, FIPS PUB 202 (2015).
+\item
+  J. Sessford, \emph{Entroptics: reading any 2-D signal as a finite optical aperture at its own entropy-matched resolution} (2026). The companion paper, and a prerequisite for this one.
+\end{itemize}
+
+\end{document}

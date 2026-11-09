@@ -6,6 +6,8 @@
 [![No FFT](https://img.shields.io/badge/DSP-none%20in%20the%20path-6E56CF)](tests/test_no_fft.py)
 [![Sponsor](https://img.shields.io/badge/Sponsor-Agience-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/Agience)
 
+Paper: [research/PAPER.pdf](research/PAPER.pdf) (two-column; source in [research/PAPER.tex](research/PAPER.tex), built from research/PAPER.md by `research/typeset/build_paper.py`).
+
 **The RF signal *is* an entropy-matched screen.**
 
 A seed-keyed optical aperture carries the payload in its coherent modes. The receiver is told

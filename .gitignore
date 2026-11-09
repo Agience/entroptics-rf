@@ -19,3 +19,14 @@ cov_*.json
 htmlcov/
 *.out.txt
 .ruff_cache/
+
+# TeX intermediates of typeset/build_paper.py (PAPER.tex and PAPER.pdf are tracked)
+/research/*.aux
+/research/*.log
+/research/*.out
+/research/*.toc
+/research/*.xdv
+/research/*.fls
+/research/*.fdb_latexmk
+/research/*.synctex.gz
+/research/typeset/__pycache__/
