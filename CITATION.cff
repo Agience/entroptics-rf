@@ -7,12 +7,20 @@ authors:
   - given-names: Ikailo John
     family-names: Sessford
     email: john@ikailo.com
-    affiliation: Ikailo
+    affiliation: Ikailo Inc.
 repository-code: "https://github.com/Agience/entroptics-rf"
 url: "https://agience.ai"
 license: AGPL-3.0-only
 version: 0.1.0
 date-released: "2026-11-08"
+doi: "10.5281/zenodo.24068189"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24068189"
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: "10.5281/zenodo.24068190"
+    description: "Version DOI - v0.1.0"
 keywords:
   - software-defined radio
   - physical layer
@@ -28,7 +36,7 @@ references:
     authors:
       - given-names: Ikailo John
         family-names: Sessford
-        affiliation: Ikailo
+        affiliation: Ikailo Inc.
     version: 0.2.10
     doi: "10.5281/zenodo.21273400"
     repository-code: "https://github.com/Agience/entroptics"
