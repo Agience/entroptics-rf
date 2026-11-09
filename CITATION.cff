@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it."
+title: "Entroptics-RF: a parameter-free physical layer on a keyed optical aperture"
+abstract: "A radio physical layer in which the transmitted signal is an entropy-matched screen: a seed-keyed optical aperture carries the payload in its coherent modes, and the receiver reads the whole geometry (rate ratio, row offset, carrier, width and alphabet) from the capture itself, with nothing pre-shared but an optional key. There are no pilots, preambles, guard intervals, cyclic prefixes or FFTs in the codec path. Includes the paper, the implementation, a blind-detector battery with positive controls, and drivers for ADALM-Pluto and RTL-SDR bench hardware."
+type: software
+authors:
+  - given-names: Ikailo John
+    family-names: Sessford
+    email: john@ikailo.com
+    affiliation: Ikailo
+repository-code: "https://github.com/Agience/entroptics-rf"
+url: "https://agience.ai"
+license: AGPL-3.0-only
+version: 0.1.0
+date-released: "2026-11-08"
+keywords:
+  - software-defined radio
+  - physical layer
+  - blind acquisition
+  - low detectability
+  - parameter-free
+  - singular value decomposition
+  - entroptics
+references:
+  - type: software
+    title: "Entroptics"
+    abstract: "Read any 2-D signal as a finite optical aperture whose resolution is fixed by the signal's own entropy."
+    authors:
+      - given-names: Ikailo John
+        family-names: Sessford
+        affiliation: Ikailo
+    version: 0.2.10
+    doi: "10.5281/zenodo.21273400"
+    repository-code: "https://github.com/Agience/entroptics"
+    license: Apache-2.0

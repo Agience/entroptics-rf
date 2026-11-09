@@ -1,0 +1,5258 @@
+{
+ "waveform": "compose K=L=64 M=4 (DQPSK), keyed row radius",
+ "battery": [
+  {
+   "n": 16384,
+   "reps": 32,
+   "nulls": 400,
+   "k_crit": 4,
+   "cells": [
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.10038134403703043
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.17659546550210767
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.040458663558647606
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.11172442999830196
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.054014577959194746
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2564070135582408
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07198777410703273
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.09562422991758575
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1842507344068907
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.23669107863968197
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.01860763897414256
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.2168827098086905
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": 0.0954516897528932
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1670953513246504
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.17026545201056076
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.160966499514637
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.028447209430623076
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.10113170777409154
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.024496309371569252
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.21518674078630082
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.09152391207523196
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.020536419113459683
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.12752195155331172
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.21080385984396027
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.20933238820220745
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1848759505626497
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.11174362809092996
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.05696149344971785
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.2826802773039682
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.05003342607206661
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.0868864041104105
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.17688853486497996
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.12058462150889034
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.3317329589774347
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.0305312037658324
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.19192172018423662
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.0721832217874847
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.13466286133951272
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.08620497566478624
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.3764692746866594
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.10678249517208088
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.13564355798773903
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.06287626769412256
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.5069845696649876
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.030025834739647525
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.10886923940464908
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.09148827408785218
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07442297980889503
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.06861878582173617
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.09332882628380768
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -0.4447929170718212
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.16094264664515437
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.3141406616837379
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.295701043327317
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.22033926227287734
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.16985260812053513
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.08599830326455889
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.22436389103337542
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07903487912726133
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.06107231950373596
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.04725243871066218
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.13594719859716764
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.02663609912886654
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.15772025517110144
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.010472354273945902
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.0480943406905768
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.027327874717949258
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1763608585613562
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.05090480013251432
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2653635291108568
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.015619100861841092
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.012625883403855743
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.016542401419601636
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.019428109141159007
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.21458359563130805
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.14217404331373032
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.20302078945026436
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.43066243563564716
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.31900885723462313
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1255853330638794
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07795513767757
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.11624818442756528
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.08060107422937576
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.02749996740332572
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.04665614165706192
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1946688223696515
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.03098914015433886
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.19039826113430178
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.2701871150235718
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.10021021439662262
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07419850470201637
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.06074516820385791
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.08209624543437712
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.0775651718581665
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.026827668582784982
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.20281421318932819
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.004080734579979131
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.12423477170312737
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.24590204949075284
+    },
+    {
+     "n": 16384,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.046449369763169754
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -7.151824308583306
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 10,
+     "reps": 32,
+     "detected": true,
+     "z": 2.2593489300759906
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.13983158196364653
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1708898590770852
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.129338182698566
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 36.23004445226409
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.051798889020237084
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.04824333277313732
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 8.566923388799484
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.16500995246174482
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -161.72164701308978
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 16.310522574352728
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 24.017653604340662
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 4,
+     "reps": 32,
+     "detected": true,
+     "z": 1.1104088686885911
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 6,
+     "reps": 32,
+     "detected": true,
+     "z": 0.7989329995743182
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 251.99526159576357
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -5.278316470833896
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 9.894039448335256
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 125.27209985666273
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 28,
+     "reps": 32,
+     "detected": true,
+     "z": -3.9891980340546915
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -516.4825687752789
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 31.097361197651
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 100.14515199056694
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 9.181001494535412
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 75.21311828679934
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 469.0759754176635
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 26,
+     "reps": 32,
+     "detected": true,
+     "z": -3.0034322190291816
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 38.957096045582524
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1300.7254657114534
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -125.56755614445387
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -657.643573598053
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 33.87189199069735
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 174.72140348174764
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 15.067707534761205
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 147.51776191638035
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 512.0703314384325
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 18.23815725276951
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 46.670928753009875
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 12870.2472509005
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -271.1805958623154
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -693.7664162241697
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 34.41644581137834
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 218.8607416656898
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 18.517043613012365
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 167.934258615133
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 517.3198688906979
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 25.351338184769478
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 47.63900944079083
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 625290006.5085659
+    },
+    {
+     "n": 16384,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -426.2698804609002
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -6.797380983904974
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 10,
+     "reps": 32,
+     "detected": true,
+     "z": 2.486786963724466
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.11353781578964307
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.01622041375181768
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.26040019537940795
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 34.98566750197982
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.02109171555481082
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.10739583841843237
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 8.25482260405098
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.14350561460836367
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -162.21268816597532
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 16.848676160589182
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 23.799617152461007
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": 1.5022211922412125
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.11045266090376149
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 252.17682175130548
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -4.212082345437055
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 6.424837358648438
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 126.03118330620728
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": -1.541287575078138
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -516.6164356746544
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 32.5017934247891
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 76.80641536459933
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 10.392936815351167
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 26.88150501243743
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 469.00224143861504
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -11.48229149830133
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 25.74401446748555
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1289.336696039588
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -36.99118852637695
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -657.9260851092437
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 35.666104285967236
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 111.36170921927449
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 16.695538354016477
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 48.49498760232339
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 512.0236402149322
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -13.609764453009957
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 31.103580508653792
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 12782.312112798045
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -82.73449919682754
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -694.137441350298
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 36.063027105209045
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 128.24471902110346
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 19.9603398544126
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 53.6701836272935
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 517.2657690110306
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -13.73718642211247
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 31.731613308621537
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 624599978.9620469
+    },
+    {
+     "n": 16384,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -100.0060665494015
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -9.489219466520595
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 25,
+     "reps": 32,
+     "detected": true,
+     "z": 5.6554755271490285
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.014431788346102665
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.14725015782066336
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.15854231155125645
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 25.072207464414277
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.538509865120408
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.21803489562040967
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 31,
+     "reps": 32,
+     "detected": true,
+     "z": 5.966922176007239
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.053904206885942246
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -164.4992781760035
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 42.80348103444048
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 35.39784329816105
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 35.593608742632945
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 5,
+     "reps": 32,
+     "detected": true,
+     "z": 1.8544864765737796
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 196.63267358315636
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -5.119348285572964
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 9.31610918871576
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 104.97293908255264
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 24,
+     "reps": 32,
+     "detected": true,
+     "z": -3.795658993374261
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -478.7098270480406
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 81.16317611724955
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 159.3675704553222
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 116.55805217494758
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 91.15427550259459
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 368.27136192509585
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -6.252910273870452
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 34.85068699902522
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1094.1944311567904
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -138.16909812653523
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -616.6197009045516
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 89.67166538914397
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 421.8696374369176
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 167.77043606016042
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 240.5045698277966
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 402.18727303263415
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 28,
+     "reps": 32,
+     "detected": true,
+     "z": -8.40724444272632
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 41.62617977302778
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 10846.031117534763
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -361.55974380376745
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -671.1374568871632
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 90.31922521051902
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 773.1569860545402
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 181.24976208413472
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 341.54213622383725
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 406.3439701469615
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 31,
+     "reps": 32,
+     "detected": true,
+     "z": -8.211288201563105
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 42.52211389822306
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 296699076.37119675
+    },
+    {
+     "n": 16384,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -3269.2616185360807
+    }
+   ]
+  },
+  {
+   "n": 262144,
+   "reps": 32,
+   "nulls": 200,
+   "k_crit": 4,
+   "cells": [
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.24468506035386745
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.019034372831325985
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.009172697191042788
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.4604423377597129
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.19807501535255792
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.4135168161829661
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.10651768126137197
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.05610843193388789
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.18668027728007122
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.08965116550006072
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.03340925491386085
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.06567282401813203
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1822063220950065
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.17205649727497366
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": 0.04772799246538881
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.2827427413425705
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.040913988792326925
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.22893001931056028
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.20898076806799198
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07074329000368666
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.2768312657785366
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07203719733160895
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.12515853870961277
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.0033028957798208044
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.25649371761750783
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.03974295982089862
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.018807042405268804
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": 0.3156051571941941
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.18266307236114251
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.09813764462724313
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.19354751512866675
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.17993512221722804
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07345893393868709
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.11796168949125573
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.256108321087831
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.14340648616374913
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07765804181551991
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.04541587649617186
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1514941715606689
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.16857542138285705
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.23711588290635668
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.17253743533575386
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.013067517171452268
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1625607179555428
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.11242881433175952
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.23632751927421583
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.07795838222963591
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.024623449415502097
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.20819215961291074
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics keyed",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1779105484227577
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.21826589521587184
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.014503025378779273
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -0.07473842979883731
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.07003170177884853
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.05536243983056453
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.06051860417478166
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.32119166324537946
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1849349309323963
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2694834248118681
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.009640640287973375
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.23379182847416952
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.03154811498676889
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.049231389590498095
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.062996603079072
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": 0.30834050370095145
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1462616935309745
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.04353558695570132
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.023358372461242997
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.07009788067330164
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1309972918066817
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.07746095571037052
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.06856846515660399
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.3355576463190275
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2261010985217534
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.03027215413233646
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.13782100390527655
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -0.332033715706452
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.0023657399633542514
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.030974896223756706
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.08262436078174203
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.062368198269852085
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2246894491639393
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.12622242702058087
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.09947172104197803
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.0748785891867316
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.028679867224245842
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2505076109814962
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.11789729139011085
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.21711868477329102
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.24240778978934396
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -0.030723564844716746
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.19935676173927247
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.0889145882518736
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.22423454742096452
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": 0.062132984428307794
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.07039116968304213
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2004240732637901
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.08560933240890292
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.1899684369638746
+    },
+    {
+     "n": 262144,
+     "kind": "entroptics open",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.23877557672189823
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -120.91032781050075
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 10.263449207097828
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 10.886119036945912
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.15710762434024683
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.2528221257910217
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 227.66689320372626
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": -1.2233173069586762
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.7641771873814677
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 55.06429504424472
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -0.24919697309108987
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -2817.702511861591
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 63.27001987181133
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 162.85033057707636
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 4,
+     "reps": 32,
+     "detected": true,
+     "z": 1.8606097761916873
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 39.58007175892424
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1336.1852551420295
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -22.832418477624053
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 47.04331333479043
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 612.6117555626989
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -14.840000536455793
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -8975.642321902298
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 116.22450567014494
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 528.3371000395817
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 12.809773265308186
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 414.40353976208473
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2445.250457133605
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -13.095150020261505
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 159.1033040821371
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 6173.726833030019
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -478.6880361346025
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -11420.494542906947
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 126.88612003542005
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 885.9789551648458
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 21.15592264567104
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 761.3237587608554
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2664.6632526480485
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 82.46422197199463
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 188.94100813476544
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 61412.58749518784
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -1028.1128786033437
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -12048.157028061822
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 127.87598782273757
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1118.2059563556434
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 25.776253773418798
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 858.9086270180164
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2691.49183601506
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 113.94716702830428
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 192.80080122756107
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 3314371872.8852096
+    },
+    {
+     "n": 262144,
+     "kind": "QPSK",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -1674.1639237662712
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -119.95674824447791
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 10.213575785280723
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 28,
+     "reps": 32,
+     "detected": true,
+     "z": 8.977098600106912
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1325002175907455
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": 0.3496260911147781
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 226.76496484740412
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -1.0624975490908553
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.4876050781310222
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 54.64561984500374
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 1,
+     "reps": 32,
+     "detected": false,
+     "z": -0.03194310743522039
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -2819.9652171451244
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 62.88075367929605
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 157.5640658992114
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 9,
+     "reps": 32,
+     "detected": true,
+     "z": 2.500834598123178
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 16.850496352522523
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1337.0397895358901
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -19.012007058019336
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 31.12840133299168
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 612.6539691797652
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -6.4876077794828735
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -8971.596528160422
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 115.39772494207693
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 416.5569096857038
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 14.94244656300641
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 185.19724100728507
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2444.8330174945095
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -51.830083026355105
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 107.40796109907022
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 6159.726279500522
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -142.15755499409707
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -11419.449662987805
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 125.63343603014347
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 577.999861506366
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 23.579325642992778
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 288.57736081918705
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2664.6138832899824
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -61.8029645182869
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 127.71879425600967
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 61491.38050011793
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -316.2271229633862
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -12046.235218253907
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 126.79348584742073
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 659.1151999475817
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 27.96549714769472
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 312.8244274427406
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2691.4731410630866
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -63.224785025275615
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 130.37739996821134
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 3317454439.5977044
+    },
+    {
+     "n": 262144,
+     "kind": "16-QAM",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -372.77083609197706
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -164.61915854678742
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 35.61974061780423
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 20.382729044003877
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 22.361049637247547
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "x^4 spectrum",
+     "hits": 2,
+     "reps": 32,
+     "detected": false,
+     "z": 0.2831773729515092
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 169.26045501054588
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "amp kurtosis",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": -1.0790153259131752
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "|C40| cumulant",
+     "hits": 3,
+     "reps": 32,
+     "detected": false,
+     "z": 0.9658400477988603
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 48.05513530679065
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": -10.0,
+     "detector": "gzip ratio",
+     "hits": 0,
+     "reps": 32,
+     "detected": false,
+     "z": 0.1242081085049358
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -2860.3234101321614
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 222.26043347233662
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 226.60767351570408
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 227.03074096820555
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 49.556266269015666
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1020.6400683127531
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -22.259617753408556
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 40.14152247678445
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 579.1966836888254
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 0.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -14.324871253435822
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -8300.22212731648
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 411.2352292439908
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 880.2026390905753
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 655.1328208232022
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 510.47443167247013
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1872.6419259355305
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -31.2612863198168
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 136.398260151364
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 5853.349063142279
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 10.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -484.84497674137333
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -10689.955626646764
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 448.3167764376345
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2430.8003348382613
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 939.7775742285158
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1318.1773341053386
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2041.0423595061511
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -49.564329368063405
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 162.23593278931065
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 58406.947745081736
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": 20.0,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -1346.3846999017162
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "spectral flatness",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -11632.005809327247
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "PSD peak/mean",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 453.11248643373983
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "symbol-rate line",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 5294.28630854046
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "x^2 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1018.788670484109
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "x^4 spectrum",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1928.9717975298208
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "autocorr peak",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 2061.6398927883242
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "amp kurtosis",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -55.27568450791949
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "|C40| cumulant",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 165.5145107075891
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "eigenvalue MME",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": 1885178814.7325294
+    },
+    {
+     "n": 262144,
+     "kind": "DSSS",
+     "snr": null,
+     "detector": "gzip ratio",
+     "hits": 32,
+     "reps": 32,
+     "detected": true,
+     "z": -12560.817931727432
+    }
+   ]
+  }
+ ],
+ "cum4": {
+  "L": 64,
+  "n": 1000800,
+  "records": [
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "aligned",
+    "value": 47.64382752826013,
+    "secs": 43.2
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "half",
+    "value": 47.60553522708178,
+    "secs": 55.3
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "w63",
+    "value": 46.13590079457401,
+    "secs": 63.7
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "aligned",
+    "value": 47.6192886578259,
+    "secs": 50.1
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "half",
+    "value": 47.66016915659179,
+    "secs": 43.9
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "w63",
+    "value": 46.102216582450346,
+    "secs": 47.2
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "aligned",
+    "value": 47.61795520765771,
+    "secs": 55.5
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "half",
+    "value": 47.61935274397446,
+    "secs": 57.3
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "w63",
+    "value": 46.115283776304544,
+    "secs": 53.0
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 0.0,
+    "stat": "aligned",
+    "value": 47.66170573767793,
+    "secs": 55.7
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 0.0,
+    "stat": "C40 (no side info)",
+    "value": 0.0034451656974852085,
+    "secs": 0.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 0.0,
+    "stat": "aligned",
+    "value": 47.687576146555706,
+    "secs": 57.0
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 0.0,
+    "stat": "C40 (no side info)",
+    "value": 0.0044231959618628025,
+    "secs": 0.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 10.0,
+    "stat": "aligned",
+    "value": 56.29090266548367,
+    "secs": 60.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 10.0,
+    "stat": "C40 (no side info)",
+    "value": 0.0011968808248639107,
+    "secs": 0.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 10.0,
+    "stat": "aligned",
+    "value": 56.278258669039175,
+    "secs": 71.5
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 10.0,
+    "stat": "C40 (no side info)",
+    "value": 0.004212804138660431,
+    "secs": 0.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "aligned",
+    "value": 62.849968680940705,
+    "secs": 72.3
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "half",
+    "value": 47.751971049818465,
+    "secs": 88.6
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "w63",
+    "value": 46.117139218956495,
+    "secs": 85.2
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "C40 (no side info)",
+    "value": 0.0048236059956252575,
+    "secs": 0.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "aligned",
+    "value": 62.84671013636752,
+    "secs": 54.1
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "half",
+    "value": 47.731221822484784,
+    "secs": 54.5
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "w63",
+    "value": 46.12109609767289,
+    "secs": 32.4
+   },
+   {
+    "kind": "entroptics keyed",
+    "snr": 20.0,
+    "stat": "C40 (no side info)",
+    "value": 0.0036128920037299395,
+    "secs": 0.1
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.003054224420338869,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.0032303817570209503,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.0015116959111765027,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.0061517925933003426,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.0027655677404254675,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.0039459411054849625,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.008649644441902637,
+    "secs": 0.0
+   },
+   {
+    "kind": "null",
+    "snr": null,
+    "stat": "C40 (no side info)",
+    "value": 0.007272535469383001,
+    "secs": 0.0
+   }
+  ]
+ }
+}
